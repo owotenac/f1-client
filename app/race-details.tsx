@@ -3,7 +3,7 @@ import { useAppStore } from '@/model/filter';
 import { SessionProps } from '@/model/session-model';
 import { OpenF1API } from '@/services/openf1api';
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, FlatList, Image, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 export default function RaceDetails() {
@@ -38,6 +38,7 @@ export default function RaceDetails() {
         <View style={styles.border}>
           <Text style={styles.main_text_race}>{currentRace.meeting_official_name}</Text>
           <Text style={styles.main_text_country}>{currentRace.country_name}</Text>
+
         </View>
         {loading ? (
           <ActivityIndicator size="large" />
@@ -60,6 +61,12 @@ export default function RaceDetails() {
 
           )
         }
+        <View>
+          <Image 
+          style={styles.image}
+            source={{uri:currentRace.pictureURL}}
+          />
+</View>
       </SafeAreaView>
     </SafeAreaProvider>
   )
@@ -69,12 +76,12 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    padding: 20,
+    padding: 30,
     backgroundColor: "#222222ff"
   },
   content: {
     flex: 1, 
-    marginTop: 50,
+    marginTop: 20,
     alignItems: 'center',
 
   },
@@ -99,5 +106,10 @@ const styles = StyleSheet.create({
   list :{
     flex:1, 
     gap: 10
+  },
+  image: {
+    width: 500,
+    height: 400,
+    alignSelf: 'center',
   }
 })

@@ -13,5 +13,8 @@ export type RaceProps = {
 	date_start: string
 	year: number
 	display_date: string
+	country_flag : string
+	circuit_image :string
+	pictureURL: string
 };
 

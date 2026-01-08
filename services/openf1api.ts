@@ -33,10 +33,10 @@ export class OpenF1API {
         return data as DriverProps[];
     };
 
-    static getRaces = async()  => {
+    static getRaces = async(season: string)  => {
         const { data } = await OpenF1API.api.get('/v1/meetings',{
             params: {
-                year: '2025'
+                year: season
             }
         });
 

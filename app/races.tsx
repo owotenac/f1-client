@@ -1,11 +1,15 @@
 import RaceCard from '@/components/race-card';
 import { RaceProps } from '@/model/race-model';
 import { OpenF1API } from '@/services/openf1api';
+import { useLocalSearchParams } from 'expo-router';
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Races() {
+  
+  const local = useLocalSearchParams();
+  const season = local.season as string;
 
   const [loading, setLoading] = useState(true);
   const [races, setRaces] = useState<RaceProps[]>([])
@@ -13,7 +17,7 @@ export default function Races() {
   useEffect(() => {
     const fetchRaces = async () => {
       try {
-        const result = await OpenF1API.getRaces();
+        const result = await OpenF1API.getRaces(season);
         setRaces(result);
         setLoading(false);
 
