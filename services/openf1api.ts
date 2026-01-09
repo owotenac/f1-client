@@ -1,6 +1,8 @@
+import { ConstructorsStandingProps } from '@/model/constructors-standing-model';
 import axios from 'axios';
 import { formatInTimeZone } from 'date-fns-tz';
 import { DriverProps } from '../model/driver-model';
+import { DriversStandingProps } from '../model/drivers-standing-model';
 import { RaceProps } from '../model/race-model';
 import { SessionResultProps } from '../model/session-result-model';
 import { SessionProps } from './../model/session-model';
@@ -8,8 +10,8 @@ import { SessionProps } from './../model/session-model';
 export class OpenF1API {
 
   static api = axios.create({
-    //baseURL: 'https://api.openf1.org',
-    baseURL: 'http://127.0.0.1:5001',
+    //baseURL: 'http://127.0.0.1:5001',
+    baseURL: 'https://f1-server.vercel.app/',
     timeout: 8000,
     });
 
@@ -87,6 +89,24 @@ export class OpenF1API {
         return data as SessionResultProps[];
     };
 
+    static getDriversStanding = async()  => {
+        const { data } = await OpenF1API.api.get('/v1/drivers_standing',{
+            params: {
+                year: '2025'
+            }
+        });
+        return data['DriverStandings'] as DriversStandingProps[];
+    };
+
+
+    static getConstructorsStanding = async()  => {
+        const { data } = await OpenF1API.api.get('/v1/constructors_standing',{
+            params: {
+                year: '2025'
+            }
+        });
+        return data['ConstructorStandings'] as ConstructorsStandingProps[];
+    }
 
 }
 

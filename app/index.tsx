@@ -19,7 +19,16 @@ export default function index() {
 
         })
   }
-
+  const driversStanding = () => {
+            router.push({
+            pathname: '/drivers-standing'
+        })
+  }
+  const constructorsStanding = () => {
+            router.push({
+            pathname: '/constructors-standing'
+        })
+  }
 
   return (
 
@@ -35,6 +44,12 @@ export default function index() {
         <Button 
                 title='Races'
                 onPress={races}/>
+        <Button 
+                title='Drivers Standing'
+                onPress={driversStanding}/>
+        <Button 
+                title='Constructors Standing'
+                onPress={constructorsStanding}/>
 
 
       </SafeAreaView>

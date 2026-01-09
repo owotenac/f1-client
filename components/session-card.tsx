@@ -35,21 +35,20 @@ const styles = StyleSheet.create({
     card: {
         backgroundColor: "#000",
         margin: 5,
-        padding: 25,
-        borderRadius: 5,
+        padding: 40,
         flexDirection: 'column',
         justifyContent: "space-between",
         alignContent: 'center',
         paddingVertical: 5,
         borderTopWidth:5,
         borderTopColor: "#C12D14",
-        minWidth: 200,
+        //minWidth: 200,
 
     },
 
     text_session_name: {
         color: "#fff",
-        fontSize: 15,
+        fontSize: 20,
         fontFamily: "f1-regular"
     },
     text_country_name: {

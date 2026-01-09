@@ -20,7 +20,8 @@ const RaceCard = (props: RaceProps) => {
   return (
     <TouchableOpacity onPress={() => select(props)}>
     <View style={styles.card}>
-            <Text style={styles.text_country_name}>{props.country_name}</Text>
+            <Text style={styles.text_country_name}>{props.meeting_name}</Text>
+            <Text style={styles.text_date}>{props.country_name}</Text>
             <Text style={styles.text_meeting_name}>{props.meeting_official_name}</Text>
             <Text style={styles.text_date}>{props.display_date}</Text>
     </View>

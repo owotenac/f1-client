@@ -1,3 +1,4 @@
+import { TabBarTheme } from '@/constants/theme';
 import { useFonts } from 'expo-font';
 import { Stack } from "expo-router";
 
@@ -10,5 +11,36 @@ export default function RootLayout() {
   }
   )
 
-  return <Stack />;
+  return (
+    <Stack
+      screenOptions={TabBarTheme}>
+      <Stack.Screen name="index" options={{ 
+        headerShown: true ,
+        title: 'F1 App',
+        
+        }} />
+      <Stack.Screen name="races" options={{ 
+        headerShown: true ,
+        title: 'Season Schedule',
+        }} />
+      <Stack.Screen name="race-details" options={{ 
+        headerShown: true ,
+        title: 'Race Schedule',
+        }} />
+      <Stack.Screen name="race-results" options={{ 
+        headerShown: true ,
+        title: 'Session Results',
+        }} />
+      <Stack.Screen name="drivers-standing" options={{ 
+        headerShown: true ,
+        title: 'Drivers Standing',
+        }} />
+      <Stack.Screen name="constructors-standing" options={{ 
+        headerShown: true ,
+        title: 'Constructors Standing',
+        }} />
+
+    </Stack>
+  )
+  
 }

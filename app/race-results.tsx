@@ -132,13 +132,14 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        padding: 20,
+        padding: 5,
         backgroundColor: "#222222ff"
     },
     content: {
         flex: 1,
         marginTop: 30,
-
+         margin: 10,
+        //alignItems: 'center',
     },
     main_text_race: {
         color: "#fff",
@@ -165,7 +166,6 @@ const styles = StyleSheet.create({
     standing: {
         flexDirection: 'row',
         margin: 5,
-        borderBottomColor: '#aaa',
         borderBottomWidth: 1,
         paddingBottom: 10
     },
@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
     },
     driver: {
         fontSize: 16,
-        width: 200,
+        width: 150,
     },
     delta: {
         textAlign: "right",

@@ -37,36 +37,36 @@ export default function RaceDetails() {
       <SafeAreaView style={styles.container}>
         <View style={styles.border}>
           <Text style={styles.main_text_race}>{currentRace.meeting_official_name}</Text>
-          <Text style={styles.main_text_country}>{currentRace.country_name}</Text>
+          <Text style={styles.main_text_country}>{currentRace.meeting_name}</Text>
 
         </View>
         {loading ? (
           <ActivityIndicator size="large" />
-        ):
-        (
-          <View style={styles.content}>
-          <FlatList style={styles.list}
-            data={sessions}
-            numColumns={2}
-            renderItem={
-              ({ item }) => (
-                <SessionCard
-                  {...item}
-                />
-              )
-            }
-            keyExtractor={(item, index) => index.toString()}
-          />
-                    </View>
+        ) :
+          (
+            <View style={styles.content}>
+              <FlatList style={styles.list}
+                data={sessions}
+                numColumns={2}
+                renderItem={
+                  ({ item }) => (
+                    <SessionCard
+                      {...item}
+                    />
+                  )
+                }
+                keyExtractor={(item, index) => index.toString()}
+              />
+            </View>
 
           )
         }
         <View>
-          <Image 
-          style={styles.image}
-            source={{uri:currentRace.pictureURL}}
+          <Image
+            style={styles.image}
+            source={{ uri: currentRace.pictureURL }}
           />
-</View>
+        </View>
       </SafeAreaView>
     </SafeAreaProvider>
   )
@@ -76,12 +76,12 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    padding: 30,
-    backgroundColor: "#222222ff"
+    padding: 5,
+    backgroundColor: "#222222ff",
   },
   content: {
-    flex: 1, 
-    marginTop: 20,
+    flex: 1,
+    marginTop: 30,
     alignItems: 'center',
 
   },
@@ -103,13 +103,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#222222ff",
     padding: 5
   },
-  list :{
-    flex:1, 
+  list: {
+    flex: 1,
     gap: 10
   },
   image: {
     width: 500,
-    height: 400,
+    height: 300,
     alignSelf: 'center',
   }
 })
