@@ -44,11 +44,11 @@ export default function ConstructorsStanding() {
                                 numColumns={1}
                                 renderItem={
                                     ({ item }) => (
-                                        <View style={[styles.standing, {borderColor: `#${item.Constructor.team_color}`}]}>
+                                        <View style={[styles.standing, {borderColor: `#${item.Constructor.color}`}]}>
 
                                             <Text style={[styles.cell, styles.position]}>{item.position}</Text>
                                             <Image source={{ uri: item.Constructor.logo_url }} style={styles.head} />
-                                            <Text style={[styles.cell, styles.driver]}> {item.Constructor.team_name} </Text>
+                                            <Text style={[styles.cell, styles.driver]}> {item.Constructor.name} </Text>
                                             <Text style={[styles.cell, styles.points]}>{item.points}</Text>
                                         </View>
                                     )

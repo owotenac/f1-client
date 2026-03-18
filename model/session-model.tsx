@@ -17,4 +17,5 @@ export type SessionProps = {
     local_start_time: string
     session_type: string
 	session_name: string
+	session_results_available: boolean
 };

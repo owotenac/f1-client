@@ -3,7 +3,7 @@ import { useAppStore } from '@/model/filter';
 import { SessionProps } from '@/model/session-model';
 import { OpenF1API } from '@/services/openf1api';
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList, Image, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Dimensions, FlatList, Image, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 export default function RaceDetails() {
@@ -80,10 +80,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#222222ff",
   },
   content: {
-    flex: 1,
+    //flex: 1,
     marginTop: 30,
-    alignItems: 'center',
-
+    marginBottom: 30,
+    width: "100%",
   },
   main_text_race: {
     color: "#fff",
@@ -104,12 +104,13 @@ const styles = StyleSheet.create({
     padding: 5
   },
   list: {
-    flex: 1,
-    gap: 10
+    //flex: 1,
+    width: "100%",
+    //gap: 10
   },
   image: {
-    width: 500,
-    height: 300,
+    width: Dimensions.get('window').width * 0.8,
+    height: 250,
     alignSelf: 'center',
   }
 })

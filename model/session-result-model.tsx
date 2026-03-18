@@ -8,7 +8,7 @@ export type SessionResultProps = {
     dns: boolean,
     dsq: boolean,
     duration: number[],
-    gap_to_leader: number[],
+    gap_to_leader: number[] | string,
     meeting_key: number,
     session_key: number
     driver_info: DriverProps

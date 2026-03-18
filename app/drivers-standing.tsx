@@ -44,11 +44,11 @@ export default function DriversStanding() {
                                 numColumns={1}
                                 renderItem={
                                     ({ item }) => (
-                                        <View style={[styles.standing, {borderColor: `#${item.team.team_color}`}]}>
+                                        <View style={[styles.standing, {borderColor: `#${item.Constructors.color}`}]}>
 
                                             <Text style={[styles.cell, styles.position]}>{item.position}</Text>
                                             <Image source={{ uri: item.Driver.picture_url }} style={styles.head} />
-                                            <Text style={[styles.cell, styles.driver]}> {item.Driver.last_name} </Text>
+                                            <Text style={[styles.cell, styles.driver]}> {item.Driver.familyName} </Text>
                                             <Text style={[styles.cell, styles.points]}>{item.points}</Text>
                                         </View>
                                     )

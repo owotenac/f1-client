@@ -1,6 +1,5 @@
 import DriverCard from '@/components/driver-card';
 import { DriverProps } from '@/model/driver-model';
-import { OpenF1API } from '@/services/openf1api';
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
@@ -13,8 +12,8 @@ export default function Drivers() {
   useEffect(() => {
     const fetchDrivers = async () => {
       try {
-        const result = await OpenF1API.getDrivers();
-        setDrivers(result);
+        // const result = await OpenF1API.getDrivers();
+        // setDrivers(result);
 
         setLoading(false);
 

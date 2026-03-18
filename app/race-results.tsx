@@ -22,7 +22,7 @@ export default function RaceResult() {
 
         if (minutes > 0)
             return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}:${milliseconds.toString().padStart(3, '0')}`;
-        
+
         return `+${secs.toString().padStart(2, '0')}:${milliseconds.toString().padStart(3, '0')}`;
 
     }
@@ -95,7 +95,7 @@ export default function RaceResult() {
         <SafeAreaProvider>
             <SafeAreaView style={styles.container}>
                 <View style={styles.border}>
-                    <Text style={styles.main_text_race}>{currentRace.meeting_official_name}</Text>
+                    <Text style={styles.main_text_race}>{currentRace.meeting_name}</Text>
                     <Text style={styles.main_text_country}>{currentSession.session_name}</Text>
                 </View>
                 {loading ? (
@@ -108,12 +108,16 @@ export default function RaceResult() {
                                 numColumns={1}
                                 renderItem={
                                     ({ item }) => (
-                                        <View style={[styles.standing, {borderColor: `#${item.driver_info.team_colour}`}]}>
-
-                                            <Text style={[styles.cell, styles.position]}>{item.position}</Text>
-                                            <Text style={[styles.cell, styles.driver]}> {item.driver_info.last_name} </Text>
-                                            <Text style={[styles.cell, styles.time]}>{getTimeDisplay(item)}</Text>
-                                            <Text style={[styles.cell, styles.delta]}>{getDeltaDisplay(item)}</Text>
+                                        <View style={[styles.standing]}>
+                                            <Text style={ styles.position}>{item.position}</Text>
+                                            <View style={[styles.driver_info, { borderColor: `#${item.driver_info.team_colour}` }]}>
+                                                <Text style={styles.driver}> {item.driver_info.last_name} </Text>
+                                                <Text style={ styles.team_text}> {item.driver_info.team_name} </Text>
+                                            </View>
+                                            <View style={styles.time_view}>
+                                                <Text style={styles.time}>{getTimeDisplay(item)}</Text>
+                                                <Text style={ styles.delta}>{getDeltaDisplay(item)}</Text>
+                                            </View>
                                         </View>
                                     )
                                 }
@@ -138,7 +142,7 @@ const styles = StyleSheet.create({
     content: {
         flex: 1,
         marginTop: 30,
-         margin: 10,
+        margin: 10,
         //alignItems: 'center',
     },
     main_text_race: {
@@ -167,30 +171,45 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         margin: 5,
         borderBottomWidth: 1,
-        paddingBottom: 10
+        paddingBottom: 10,
+        borderColor: '#424242'
     },
     position: {
         width: 50,
+        fontSize: 20,
+        color: 'white'
+        
     },
     time: {
         textAlign: "right",
-        justifyContent: "flex-end",
-        alignContent: "flex-end",
-    },
-    cell: {
-        color: "#fff",
-        fontFamily: "f1-regular",
+        color: 'white'
     },
     driver: {
-        fontSize: 16,
-        width: 150,
+        fontSize: 17,
+        //width: 150,
+        fontFamily: 'f1-regular',
+        color: 'white'
     },
     delta: {
         textAlign: "right",
-        justifyContent: "flex-end",
-        alignContent: "flex-end",
-        width: 100,
-        fontSize:10
+        //width: 100,
+        fontSize: 10,
+        fontFamily: 'f1-regular',
+        color: "#525252"
+    },
+    driver_info: {
+        flex:1,
+        borderLeftWidth: 3,
+        paddingLeft: 5
+    },
+    team_text: {
+        fontSize: 12,
+        color: "#525252"
+    },
+    time_view: {
+        alignItems: 'flex-end',
+        marginRight: 10
+
     }
 
 })

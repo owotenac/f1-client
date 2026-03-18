@@ -2,7 +2,7 @@ import { useAppStore } from '@/model/filter';
 import { RaceProps } from '@/model/race-model';
 import { useRouter } from 'expo-router';
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const RaceCard = (props: RaceProps) => {
   
@@ -20,7 +20,10 @@ const RaceCard = (props: RaceProps) => {
   return (
     <TouchableOpacity onPress={() => select(props)}>
     <View style={styles.card}>
+        <View style={{flexDirection:'row', marginTop : 5, gap:10}}>
+            <Image style={styles.image} source={{uri: props.country_flag}} />
             <Text style={styles.text_country_name}>{props.meeting_name}</Text>
+            </View>
             <Text style={styles.text_date}>{props.country_name}</Text>
             <Text style={styles.text_meeting_name}>{props.meeting_official_name}</Text>
             <Text style={styles.text_date}>{props.display_date}</Text>
@@ -62,6 +65,9 @@ const styles = StyleSheet.create({
         fontSize: 12,
         color: "#fff",
     },
-
+    image :{
+        width: 50,
+        height: 30
+    }
 
 })

@@ -3,7 +3,7 @@ import { DriverProps } from "./driver-model";
 
 export type DriversStandingProps = {
     Driver: DriverProps,
-    team: ConstructorProps,
+    Constructors: ConstructorProps,
     points: number,
     position: number,
     position_text: string,
