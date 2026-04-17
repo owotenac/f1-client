@@ -32,8 +32,8 @@ export default function DriversStanding() {
 
         <SafeAreaProvider>
             <SafeAreaView style={styles.container}>
-                        <View style={styles.border}>
-        </View>
+                <View style={styles.border}>
+                </View>
                 {loading ? (
                     <ActivityIndicator size="large" />
                 ) :
@@ -44,11 +44,11 @@ export default function DriversStanding() {
                                 numColumns={1}
                                 renderItem={
                                     ({ item }) => (
-                                        <View style={[styles.standing, {borderColor: `#${item.Constructors.color}`}]}>
+                                        <View style={[styles.standing, { borderColor: `#${item.Constructors.color}` }]}>
 
                                             <Text style={[styles.cell, styles.position]}>{item.position}</Text>
-                                            <Image source={{ uri: item.Driver.picture_url }} style={styles.head} />
-                                            <Text style={[styles.cell, styles.driver]}> {item.Driver.familyName} </Text>
+                                            <Image source={{ uri: item.Driver.headshot_url }} style={styles.head} />
+                                            <Text style={[styles.cell, styles.driver]}> {item.Driver.name_acronym}</Text>
                                             <Text style={[styles.cell, styles.points]}>{item.points}</Text>
                                         </View>
                                     )
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     list: {
         flex: 1,
     },
-        standing: {
+    standing: {
         flexDirection: 'row',
         margin: 10,
         //borderBottomColor: '#aaa',
@@ -111,24 +111,24 @@ const styles = StyleSheet.create({
         alignContent: "flex-end",
         justifyContent: "flex-end",
     },
-      border: {
-    borderTopWidth: 5,
-    borderTopColor: "#C12D14",
-    backgroundColor: "#222222ff",
-    padding: 5
-  },  main_text_race: {
-    color: "#fff",
-    fontSize: 25,
-    fontFamily: "f1-regular",
-    textAlign: 'center'
-  },
-  head: {
-    width: 50,
-    height: 150, 
-    resizeMode: 'cover',
-    position: 'absolute',
-    top: 0,
-    left: 30
-  }
+    border: {
+        borderTopWidth: 5,
+        borderTopColor: "#C12D14",
+        backgroundColor: "#222222ff",
+        padding: 5
+    }, main_text_race: {
+        color: "#fff",
+        fontSize: 25,
+        fontFamily: "f1-regular",
+        textAlign: 'center'
+    },
+    head: {
+        width: 50,
+        height: 150,
+        resizeMode: 'cover',
+        position: 'absolute',
+        top: 0,
+        left: 30
+    }
 }
 )

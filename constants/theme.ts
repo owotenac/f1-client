@@ -13,5 +13,5 @@ export const TabBarTheme = {
     backgroundColor: '#ffffffff',
   },
   headerShown: true,
-  
+
 }

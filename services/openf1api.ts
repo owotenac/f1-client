@@ -111,5 +111,23 @@ export class OpenF1API {
         return data['ConstructorStandings'] as ConstructorsStandingProps[];
     }
 
+    static getLastRace = async () => {
+        const { data } = await OpenF1API.api.get('api/v1/getLastResults');
+
+        const race = data['Race'] as RaceProps
+        const session_result = data['Results']['results'] as SessionResultProps[]
+
+        return { race, session_result };
+    }
+    static getNextRace = async () => {
+        const { data } = await OpenF1API.api.get('api/v1/getNextGP');
+        const _race = data['next_gp'] as RaceProps
+        _race.display_date = new Date(_race.date_start).toLocaleDateString('en-GB', {
+            day: '2-digit',
+            month: 'short',
+            year: 'numeric'
+        })
+        return _race;
+    }
 }
 

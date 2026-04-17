@@ -14,20 +14,20 @@ const SessionCard = (session: SessionProps) => {
   };
 
   return (
-<TouchableOpacity
-  style={[styles.card, session.session_results_available && styles.card_active]}
-  onPress={() => select(session)}
-  disabled={!session.session_results_available}
->
-  <Text style={[styles.text_session_name, session.session_results_available && styles.text_session_name_active]}>
-    {session.session_name}
-  </Text>
-  <Text style={styles.text_date}>{session.display_date}</Text>
-  <Text style={styles.text_date}>{session.local_start_time}</Text>
-  {session.session_results_available && (
-    <Text style={styles.chevron}>›</Text>
-  )}
-</TouchableOpacity>
+    <TouchableOpacity
+      style={[styles.card, session.session_results_available && styles.card_active]}
+      onPress={() => select(session)}
+      disabled={!session.session_results_available}
+    >
+      <Text style={[styles.text_session_name, session.session_results_available && styles.text_session_name_active]}>
+        {session.session_name}
+      </Text>
+      <Text style={styles.text_date}>{session.display_date}</Text>
+      <Text style={styles.text_date}>{session.local_start_time}</Text>
+      {session.session_results_available && (
+        <Text style={styles.chevron}>›</Text>
+      )}
+    </TouchableOpacity>
   );
 };
 

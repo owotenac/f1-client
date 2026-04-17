@@ -7,7 +7,7 @@ import { ActivityIndicator, ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Races() {
-  
+
   const local = useLocalSearchParams();
   const season = local.season as string;
 
@@ -17,7 +17,7 @@ export default function Races() {
   useEffect(() => {
     const fetchRaces = async () => {
       try {
-        const result = await OpenF1API.getRaces(season);
+        const result = await OpenF1API.getRaces('2026');
         setRaces(result);
         setLoading(false);
 
@@ -37,7 +37,7 @@ export default function Races() {
 
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           {loading &&
             <ActivityIndicator size="large" />
           }

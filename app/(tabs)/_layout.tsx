@@ -1,28 +1,29 @@
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { Tabs } from 'expo-router';
 
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-
 export default function TabLayout() {
-  //const colorScheme = useColorScheme();
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: 'dark',//Colors[colorScheme ?? 'light'].tint,
-        headerShown: false
+        tabBarActiveTintColor: 'dark',
+        headerShown: true
       }}>
       <Tabs.Screen
-        name="Drivers"
+        name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <MaterialIcons name="people" size={24} color="black" />,
+          tabBarIcon: ({ color }) => <MaterialIcons name="home" size={24} color="black" />,
+          headerShown: false,
+          tabBarShowLabel: false,
+          title: '',
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="races"
         options={{
-          title: 'Explore',
           tabBarIcon: ({ color }) => <MaterialIcons name="people" size={24} color="black" />,
+          headerShown: false,
+          tabBarShowLabel: false,
         }}
       />
     </Tabs>

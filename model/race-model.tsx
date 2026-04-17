@@ -1,20 +1,20 @@
 export type RaceProps = {
-    meeting_key: number
-    circuit_key: number,
-	circuit_short_name: string
+	meeting_key: number
 	meeting_code: string
+	meeting_name: string
+	meeting_official_name: string
+	circuit_key: number,
+	circuit_short_name: string
+	circuit_image: string
 	location: string
 	country_key: number
 	country_code: string
 	country_name: string
-	meeting_name: string
-	meeting_official_name: string
+	country_flag: string
 	gmt_offset: string
 	date_start: string
 	year: number
 	display_date: string
-	country_flag : string
-	circuit_image :string
 	pictureURL: string
 };
 
