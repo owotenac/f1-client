@@ -1,9 +1,14 @@
+import { useAppStore } from '@/model/filter';
 import { RaceProps } from '@/model/race-model';
+import { useRouter } from 'expo-router';
 import React, { useEffect, useState } from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const NextRace = (race: RaceProps) => {
     const [timeLeft, setTimeLeft] = useState<string>('');
+    const { setCurrentRace } = useAppStore();
+
+    const router = useRouter();
 
     useEffect(() => {
         if (!race) return;
@@ -32,6 +37,12 @@ const NextRace = (race: RaceProps) => {
         return () => clearInterval(intervalId);
     }, [race]);
 
+    const raceDetails = () => {
+        setCurrentRace(race);
+        router.push({
+            pathname: '/race-details'
+        })
+    }
     return (
         <View style={styles.main_container}>
             <View style={styles.container}>
@@ -46,10 +57,10 @@ const NextRace = (race: RaceProps) => {
                 <Text style={styles.text_date}>{race?.display_date}</Text>
                 {timeLeft ? <Text style={styles.text_time}>{timeLeft}</Text> : null}
             </View>
-            <View style={{ flexDirection: 'row', gap: 10, backgroundColor: "#222222ff", padding: 15, justifyContent: 'space-between' }}>
+            <TouchableOpacity onPress={() => { raceDetails() }} style={{ flexDirection: 'row', gap: 10, backgroundColor: "#222222ff", padding: 15, justifyContent: 'space-between' }}>
                 <Text style={styles.text_schedule}>Race Schedule</Text>
                 <Text style={styles.text_schedule}>›</Text>
-            </View>
+            </TouchableOpacity>
         </View>
     )
 }

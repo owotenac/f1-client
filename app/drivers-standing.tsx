@@ -42,6 +42,7 @@ export default function DriversStanding() {
                             <FlatList style={styles.list}
                                 data={standing}
                                 numColumns={1}
+                                showsVerticalScrollIndicator={false}
                                 renderItem={
                                     ({ item }) => (
                                         <View style={[styles.standing, { borderColor: `#${item.Constructors.color}` }]}>
@@ -89,7 +90,7 @@ const styles = StyleSheet.create({
         overflow: 'hidden'
     },
     position: {
-        width: 90,
+        width: 40,
     },
     time: {
         textAlign: "right",
@@ -123,12 +124,10 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     head: {
-        width: 50,
-        height: 150,
-        resizeMode: 'cover',
-        position: 'absolute',
-        top: 0,
-        left: 30
-    }
+        width: 30,
+        height: 30,
+        borderRadius: 15,
+        marginHorizontal: 10,
+    },
 }
 )

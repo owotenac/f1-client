@@ -1,6 +1,7 @@
 import { DriversStandingProps } from '@/model/drivers-standing-model';
+import { router } from 'expo-router';
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const DriversStandingsSimplified = ({ standings }: { standings: DriversStandingProps[] }) => {
 
@@ -17,10 +18,10 @@ const DriversStandingsSimplified = ({ standings }: { standings: DriversStandingP
                     </View>
                 ))}
             </View>
-            <View style={{ flexDirection: 'row', gap: 10, backgroundColor: "#222222ff", padding: 15, justifyContent: 'space-between' }}>
+            <TouchableOpacity onPress={() => { router.push('/drivers-standing') }} style={{ flexDirection: 'row', gap: 10, backgroundColor: "#222222ff", padding: 15, justifyContent: 'space-between' }}>
                 <Text style={styles.result_text}>Full Standings</Text>
                 <Text style={styles.result_text}>›</Text>
-            </View>
+            </TouchableOpacity>
         </View>
     );
 };

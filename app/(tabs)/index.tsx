@@ -6,6 +6,7 @@ import { LastRaceSkeleton } from '@/components/squeleton/last-race-squeleton';
 import { NextRaceSkeleton } from '@/components/squeleton/next-race-squeleton';
 import { DriversStandingProps } from '@/model/drivers-standing-model';
 import { RaceProps } from '@/model/race-model';
+import { SessionProps } from '@/model/session-model';
 import { SessionResultProps } from '@/model/session-result-model';
 import { OpenF1API } from '@/services/openf1api';
 import { useRouter } from 'expo-router';
@@ -17,6 +18,7 @@ const logo = require('../../assets/images/F1.png')
 
 type LastRaceProps = {
   race: RaceProps;
+  session: SessionProps;
   session_result: SessionResultProps[];
 }
 type LandingDataProps = {

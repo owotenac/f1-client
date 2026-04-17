@@ -115,9 +115,10 @@ export class OpenF1API {
         const { data } = await OpenF1API.api.get('api/v1/getLastResults');
 
         const race = data['Race'] as RaceProps
+        const session = data['Session'] as SessionProps
         const session_result = data['Results']['results'] as SessionResultProps[]
 
-        return { race, session_result };
+        return { race, session, session_result };
     }
     static getNextRace = async () => {
         const { data } = await OpenF1API.api.get('api/v1/getNextGP');

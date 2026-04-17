@@ -8,8 +8,8 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 export default function RaceResult() {
 
     const [loading, setLoading] = useState(true);
-    const { currentSession, currentRace } = useAppStore();
-    const [sessionResults, setSessionsResults] = useState<SessionResultProps[]>([]);
+    const { currentSession, currentRace, currentSessionResults } = useAppStore();
+    const [sessionResults, setSessionsResults] = useState<SessionResultProps[]>(currentSessionResults);
 
     const formatTime = (seconds: number): string => {
         const hours = Math.floor(seconds / 3600);
@@ -87,6 +87,9 @@ export default function RaceResult() {
         if (sessionResults.length === 0) {
             fetchSessions();
         }
+        else {
+            setLoading(false);
+        }
     }, []);
 
 
@@ -109,14 +112,14 @@ export default function RaceResult() {
                                 renderItem={
                                     ({ item }) => (
                                         <View style={[styles.standing]}>
-                                            <Text style={ styles.position}>{item.position}</Text>
+                                            <Text style={styles.position}>{item.position}</Text>
                                             <View style={[styles.driver_info, { borderColor: `#${item.driver_info.team_colour}` }]}>
                                                 <Text style={styles.driver}> {item.driver_info.last_name} </Text>
-                                                <Text style={ styles.team_text}> {item.driver_info.team_name} </Text>
+                                                <Text style={styles.team_text}> {item.driver_info.team_name} </Text>
                                             </View>
                                             <View style={styles.time_view}>
                                                 <Text style={styles.time}>{getTimeDisplay(item)}</Text>
-                                                <Text style={ styles.delta}>{getDeltaDisplay(item)}</Text>
+                                                <Text style={styles.delta}>{getDeltaDisplay(item)}</Text>
                                             </View>
                                         </View>
                                     )
@@ -178,7 +181,7 @@ const styles = StyleSheet.create({
         width: 50,
         fontSize: 20,
         color: 'white'
-        
+
     },
     time: {
         textAlign: "right",
@@ -198,7 +201,7 @@ const styles = StyleSheet.create({
         color: "#525252"
     },
     driver_info: {
-        flex:1,
+        flex: 1,
         borderLeftWidth: 3,
         paddingLeft: 5
     },

@@ -1,9 +1,22 @@
+import { useAppStore } from '@/model/filter';
 import { RaceProps } from '@/model/race-model';
+import { SessionProps } from '@/model/session-model';
 import { SessionResultProps } from '@/model/session-result-model';
+import { useRouter } from 'expo-router';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-const LastRace = ({ race, session_result }: { race: RaceProps, session_result: SessionResultProps[] }) => {
+const LastRace = ({ race, session, session_result }: { race: RaceProps, session: SessionProps, session_result: SessionResultProps[] }) => {
+
+    const { setCurrentRace, setCurrentSession, setCurrentSessionResults } = useAppStore();
+    const router = useRouter();
+
+    const raceResults = () => {
+        setCurrentRace(race)
+        setCurrentSession(session)
+        setCurrentSessionResults(session_result)
+        router.push('/race-results')
+    }
 
     return (
         <View style={styles.main_container}>
@@ -25,10 +38,10 @@ const LastRace = ({ race, session_result }: { race: RaceProps, session_result: S
 
 
             </View>
-            <View style={{ flexDirection: 'row', gap: 10, backgroundColor: "#222222ff", padding: 15, justifyContent: 'space-between' }}>
+            <TouchableOpacity onPress={() => { raceResults() }} style={{ flexDirection: 'row', gap: 10, backgroundColor: "#222222ff", padding: 15, justifyContent: 'space-between' }}>
                 <Text style={styles.result_text}>Full Results</Text>
                 <Text style={styles.result_text}>›</Text>
-            </View>
+            </TouchableOpacity>
         </View>
     )
 }
