@@ -47,17 +47,17 @@ const NextRace = (race: RaceProps) => {
         <View style={styles.main_container}>
             <View style={styles.container}>
                 <Text style={styles.text_circuit}>{race?.meeting_name}</Text>
-                <View style={{ flexDirection: 'row', gap: 10 }}>
+                <View style={{ flexDirection: 'row', gap: 10, justifyContent: 'center' }}>
                     <Image
                         style={styles.flag}
                         source={{ uri: race?.country_flag }}
                     />
-                    <Text style={styles.text_circuit}>{race?.country_name}</Text>
+                    <Text style={styles.text_country}>{race?.country_name}</Text>
+                    <Text style={styles.text_date}>{race?.display_date}</Text>
                 </View>
-                <Text style={styles.text_date}>{race?.display_date}</Text>
                 {timeLeft ? <Text style={styles.text_time}>{timeLeft}</Text> : null}
             </View>
-            <TouchableOpacity onPress={() => { raceDetails() }} style={{ flexDirection: 'row', gap: 10, backgroundColor: "#222222ff", padding: 15, justifyContent: 'space-between' }}>
+            <TouchableOpacity onPress={() => { raceDetails() }} style={{ flexDirection: 'row', gap: 10, backgroundColor: "#7c7b7bff", padding: 15, justifyContent: 'space-between' }}>
                 <Text style={styles.text_schedule}>Race Schedule</Text>
                 <Text style={styles.text_schedule}>›</Text>
             </TouchableOpacity>
@@ -74,10 +74,10 @@ const styles = StyleSheet.create({
     container: {
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15,
-        borderBottomColor: "#222222ff",
+        borderBottomColor: "#242424ff",
         borderWidth: 0.5,
-        borderColor: "#220d0dff",
-        backgroundColor: "#220d0dff",
+        borderColor: "#242424ff",
+        backgroundColor: "#242424ff",
         padding: 25,
         flexDirection: 'column',
         justifyContent: "space-between",
@@ -93,7 +93,14 @@ const styles = StyleSheet.create({
     },
     text_circuit: {
         fontFamily: "f1-bold",
-        fontSize: 20,
+        fontSize: 22,
+        color: "#fff",
+        textTransform: "uppercase",
+        textAlign: "center"
+    },
+    text_country: {
+        fontFamily: "f1-bold",
+        fontSize: 14,
         color: "#fff",
     },
     text_date: {
@@ -105,6 +112,7 @@ const styles = StyleSheet.create({
         fontFamily: "f1-regular",
         fontSize: 14,
         color: "#fff",
+        textAlign: "center"
     },
     flag: {
         width: 30,

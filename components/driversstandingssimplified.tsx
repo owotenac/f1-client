@@ -18,7 +18,7 @@ const DriversStandingsSimplified = ({ standings }: { standings: DriversStandingP
                     </View>
                 ))}
             </View>
-            <TouchableOpacity onPress={() => { router.push('/drivers-standing') }} style={{ flexDirection: 'row', gap: 10, backgroundColor: "#222222ff", padding: 15, justifyContent: 'space-between' }}>
+            <TouchableOpacity onPress={() => { router.push('/(tabs)/standings') }} style={{ flexDirection: 'row', gap: 10, backgroundColor: "#7c7b7bff", padding: 15, justifyContent: 'space-between' }}>
                 <Text style={styles.result_text}>Full Standings</Text>
                 <Text style={styles.result_text}>›</Text>
             </TouchableOpacity>
@@ -33,13 +33,13 @@ const styles = StyleSheet.create({
         margin: 5,
     },
     container: {
-        backgroundColor: "#222222ff",
+        backgroundColor: "#242424ff",
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15,
         borderWidth: 0.5,
-        borderColor: "#222222ff",
+        borderColor: "#242424ff",
         padding: 10,
-        borderBottomColor: "#222222ff",
+        borderBottomColor: "#242424ff",
     },
     header: {
         flexDirection: 'row',

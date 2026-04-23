@@ -1,3 +1,9 @@
+export type FastestLapProps = {
+	year: string
+	time: string
+	driver: string
+}
+
 export type RaceProps = {
 	meeting_key: number
 	meeting_code: string
@@ -16,5 +22,10 @@ export type RaceProps = {
 	year: number
 	display_date: string
 	pictureURL: string
+	circuit_length_km: number
+	number_of_laps: number
+	race_distance_km: number
+	number_of_corners: number
+	fastest_lap: FastestLapProps
 };
 

@@ -1,3 +1,4 @@
+import { BG_THEME } from '@/constants/theme';
 import { useAppStore } from '@/model/filter';
 import { SessionResultProps } from '@/model/session-result-model';
 import { OpenF1API } from '@/services/openf1api';
@@ -107,6 +108,7 @@ export default function RaceResult() {
                     (
                         <View style={styles.content}>
                             <FlatList style={styles.list}
+                                showsVerticalScrollIndicator={false}
                                 data={sessionResults}
                                 numColumns={1}
                                 renderItem={
@@ -140,7 +142,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 5,
-        backgroundColor: "#222222ff"
+        backgroundColor: BG_THEME
     },
     content: {
         flex: 1,
@@ -163,7 +165,7 @@ const styles = StyleSheet.create({
     border: {
         borderTopWidth: 5,
         borderTopColor: "#C12D14",
-        backgroundColor: "#222222ff",
+        backgroundColor: BG_THEME,
         padding: 5
     },
     list: {
@@ -175,7 +177,7 @@ const styles = StyleSheet.create({
         margin: 5,
         borderBottomWidth: 1,
         paddingBottom: 10,
-        borderColor: '#424242'
+        borderColor: '#868686ff'
     },
     position: {
         width: 50,

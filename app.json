@@ -1,13 +1,12 @@
 {
   "expo": {
-    "name": "f1-app",
-    "slug": "f1-app",
+    "name": "FastTrack",
+    "slug": "fasttrack",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "f1app",
+    "scheme": "fasttrack",
     "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
     "ios": {
       "supportsTablet": true
     },
@@ -18,9 +17,8 @@
         "backgroundImage": "./assets/images/icon.png",
         "monochromeImage": "./assets/images/icon.png"
       },
-      "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "package": "com.owoignier.f1app"
+      "package": "com.owoignier.fasttrack"
     },
     "web": {
       "output": "static",
@@ -47,9 +45,7 @@
     },
     "extra": {
       "router": {},
-      "eas": {
-        "projectId": "8fbefe80-8353-4b13-a8cf-941652921108"
-      }
+      "eas": {}
     }
   }
 }

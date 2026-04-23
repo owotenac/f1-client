@@ -5,38 +5,38 @@ import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const RaceCard = (props: RaceProps) => {
-  
-  const {setCurrentRace} = useAppStore();
-  const router = useRouter();
 
-  const select = (p: RaceProps) => {
-      setCurrentRace(p)
-      router.push({
+    const { setCurrentRace } = useAppStore();
+    const router = useRouter();
+
+    const select = (p: RaceProps) => {
+        setCurrentRace(p)
+        router.push({
             pathname: '/race-details'
         })
-  }
+    }
 
 
-  return (
-    <TouchableOpacity onPress={() => select(props)}>
-    <View style={styles.card}>
-        <View style={{flexDirection:'row', marginTop : 5, gap:10}}>
-            <Image style={styles.image} source={{uri: props.country_flag}} />
-            <Text style={styles.text_country_name}>{props.meeting_name}</Text>
+    return (
+        <TouchableOpacity onPress={() => select(props)}>
+            <View style={styles.card}>
+                <View style={{ flexDirection: 'row', marginTop: 5, gap: 10 }}>
+                    <Image style={styles.image} source={{ uri: props.country_flag }} />
+                    <Text style={styles.text_country_name}>{props.meeting_name}</Text>
+                </View>
+                <Text style={styles.text_date}>{props.country_name}</Text>
+                <Text style={styles.text_meeting_name}>{props.meeting_official_name}</Text>
+                <Text style={styles.text_date}>{props.display_date}</Text>
             </View>
-            <Text style={styles.text_date}>{props.country_name}</Text>
-            <Text style={styles.text_meeting_name}>{props.meeting_official_name}</Text>
-            <Text style={styles.text_date}>{props.display_date}</Text>
-    </View>
-  </TouchableOpacity>    
-  )
+        </TouchableOpacity>
+    )
 }
 
 export default RaceCard
 
 const styles = StyleSheet.create({
     card: {
-        backgroundColor: "#000",
+        backgroundColor: "#2c2c2cff",
         margin: 5,
         padding: 25,
         borderRadius: 5,
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         alignContent: 'center',
         paddingVertical: 5,
-        borderTopWidth:5,
+        borderTopWidth: 5,
         borderTopColor: "#C12D14"
 
     },
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
         fontSize: 12,
         color: "#fff",
     },
-    image :{
+    image: {
         width: 50,
         height: 30
     }

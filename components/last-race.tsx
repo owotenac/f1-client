@@ -38,7 +38,7 @@ const LastRace = ({ race, session, session_result }: { race: RaceProps, session:
 
 
             </View>
-            <TouchableOpacity onPress={() => { raceResults() }} style={{ flexDirection: 'row', gap: 10, backgroundColor: "#222222ff", padding: 15, justifyContent: 'space-between' }}>
+            <TouchableOpacity onPress={() => { raceResults() }} style={{ flexDirection: 'row', gap: 10, backgroundColor: "#7c7b7bff", padding: 15, justifyContent: 'space-between' }}>
                 <Text style={styles.result_text}>Full Results</Text>
                 <Text style={styles.result_text}>›</Text>
             </TouchableOpacity>
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         borderTopWidth: 5,
         borderTopColor: "#C12D14",
-        backgroundColor: "#141414ff",
+        backgroundColor: "#242424ff",
         flexDirection: 'column',
         justifyContent: "space-between",
         alignContent: 'center',
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     mainText: {
         fontFamily: "f1-regular",
         fontSize: 16,
-        color: "#969494ff",
+        color: "#d1d0d0ff",
     },
     text: {
         fontFamily: "f1-regular",
@@ -77,11 +77,10 @@ const styles = StyleSheet.create({
     },
     pilot_text: {
         fontFamily: "f1-wide",
-        fontSize: 11,
+        fontSize: 10,
         color: "#ffffffff",
     },
     rank_view: {
-        //backgroundColor: "#811d0b80",
         padding: 5,
         borderRadius: 30,
         width: 60,
@@ -89,7 +88,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderWidth: 1,
-        //borderColor: "#fd2600ff",
     },
     result_text: {
         fontFamily: "f1-regular",

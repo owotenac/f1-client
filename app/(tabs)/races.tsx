@@ -1,4 +1,5 @@
 import RaceCard from '@/components/race-card';
+import { BG_THEME } from '@/constants/theme';
 import { RaceProps } from '@/model/race-model';
 import { OpenF1API } from '@/services/openf1api';
 import { useLocalSearchParams } from 'expo-router';
@@ -54,8 +55,8 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    padding: 20,
-    backgroundColor: "#222222ff"
+    padding: 15,
+    backgroundColor: BG_THEME
 
   }
 })

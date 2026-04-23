@@ -1,3 +1,4 @@
+import { BG_THEME } from '@/constants/theme';
 import { Skeleton } from 'moti/skeleton';
 import { StyleSheet, View } from 'react-native';
 
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
     schedule_bar: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        backgroundColor: "#222222ff",
+        backgroundColor: BG_THEME,
         padding: 10,
     },
 });

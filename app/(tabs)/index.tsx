@@ -4,17 +4,17 @@ import NextRace from '@/components/next-race';
 import { DriversStandingsSimplifiedSkeleton } from '@/components/squeleton/driversstandingssimplified-squeleton';
 import { LastRaceSkeleton } from '@/components/squeleton/last-race-squeleton';
 import { NextRaceSkeleton } from '@/components/squeleton/next-race-squeleton';
+import { BG_THEME } from '@/constants/theme';
 import { DriversStandingProps } from '@/model/drivers-standing-model';
 import { RaceProps } from '@/model/race-model';
 import { SessionProps } from '@/model/session-model';
 import { SessionResultProps } from '@/model/session-result-model';
 import { OpenF1API } from '@/services/openf1api';
-import { useRouter } from 'expo-router';
 import React, { useEffect, useState } from 'react';
-import { ScrollView, StyleSheet, Text } from 'react-native';
+import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
-const logo = require('../../assets/images/F1.png')
+const logo = require('../../assets/images/icon.png')
 
 type LastRaceProps = {
   race: RaceProps;
@@ -28,7 +28,7 @@ type LandingDataProps = {
 }
 
 export default function index() {
-  const router = useRouter();
+
 
   const [landingData, setLandingData] = useState<LandingDataProps | null>(null);
   const [loading, setLoading] = useState(true);
@@ -51,28 +51,17 @@ export default function index() {
     fetchAll();
   }, []);
 
-  const races = () => {
-    router.push({
-      pathname: '/races',
-      params: { season: 2026 }
-
-    })
-  }
-  const driversStanding = () => {
-    router.push({
-      pathname: '/drivers-standing'
-    })
-  }
-  const constructorsStanding = () => {
-    router.push({
-      pathname: '/constructors-standing'
-    })
-  }
-
   return (
 
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
+        <View style={styles.header}>
+          <View style={{ flexDirection: "row", alignItems: "center", gap: 10, alignSelf: "flex-start" }}>
+            <Image source={logo} style={styles.image} />
+            <Text style={styles.headerText_title}>FastTrack</Text>
+          </View>
+          <Text style={styles.headerText}>2026 Formula 1 Season</Text>
+        </View>
         <ScrollView
           style={styles.scroll}
           showsVerticalScrollIndicator={false}
@@ -106,7 +95,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 15,
-    backgroundColor: "#15151D",
+    backgroundColor: BG_THEME,
     gap: 10,
     alignContent: 'center',
   },
@@ -136,9 +125,24 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
   image: {
-    width: 200,
+    width: 50,
     height: 50,
 
+  },
+  header: {
+    alignItems: 'center',
+    marginTop: 10,
+    marginBottom: 20,
+  },
+  headerText: {
+    fontFamily: "f1-regular",
+    fontSize: 18,
+    color: "#f7f7f7ff",
+  },
+  headerText_title: {
+    fontFamily: "f1-bold",
+    fontSize: 25,
+    color: "#fff",
   },
   mainText: {
     fontFamily: "f1-regular",

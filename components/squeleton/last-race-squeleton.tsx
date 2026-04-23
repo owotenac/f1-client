@@ -1,3 +1,4 @@
+import { BG_THEME } from '@/constants/theme';
 import { Skeleton } from 'moti/skeleton';
 import { StyleSheet, View } from 'react-native';
 
@@ -6,7 +7,7 @@ export const LastRaceSkeleton = () => (
         <View style={styles.container}>
             {/* meeting_name */}
             <Skeleton colorMode="dark" width={150} height={18} radius={4} />
-            
+
             {/* 3 Premiers pilotes */}
             <View style={{ flexDirection: 'row', gap: 15, justifyContent: 'space-between', paddingHorizontal: 25 }}>
                 {[1, 2, 3].map((item) => (
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
     full_results_bar: {
         flexDirection: 'row',
         gap: 10,
-        backgroundColor: "#222222ff",
+        backgroundColor: BG_THEME,
         padding: 10,
         justifyContent: 'space-between'
     }

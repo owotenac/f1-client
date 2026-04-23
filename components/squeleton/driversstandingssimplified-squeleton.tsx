@@ -1,3 +1,4 @@
+import { BG_THEME } from '@/constants/theme';
 import { Skeleton } from 'moti/skeleton';
 import { StyleSheet, View } from 'react-native';
 
@@ -22,7 +23,7 @@ export const DriversStandingsSimplifiedSkeleton = () => {
                     </View>
                 ))}
             </View>
-            <View style={{ flexDirection: 'row', gap: 10, backgroundColor: "#222222ff", padding: 10, justifyContent: 'space-between' }}>
+            <View style={{ flexDirection: 'row', gap: 10, backgroundColor: BG_THEME, padding: 10, justifyContent: 'space-between' }}>
                 <Skeleton colorMode="dark" width={80} height={14} radius={4} />
             </View>
         </View>
@@ -34,13 +35,13 @@ const styles = StyleSheet.create({
         margin: 5,
     },
     container: {
-        backgroundColor: "#222222ff",
+        backgroundColor: BG_THEME,
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15,
         borderWidth: 0.5,
         borderColor: "#7e1b09ff",
         padding: 10,
-        borderBottomColor: "#222222ff",
+        borderBottomColor: BG_THEME,
     },
     row: {
         flexDirection: 'row',

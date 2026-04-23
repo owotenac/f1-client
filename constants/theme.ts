@@ -1,6 +1,8 @@
+export const BG_THEME = "#4e4d4dff"
+
 export const TabBarTheme = {
   headerStyle: {
-    backgroundColor: "#222222ff",
+    backgroundColor: BG_THEME,
   },
   headerTitleStyle: {
     color: "#ffffffff",

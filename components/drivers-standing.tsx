@@ -1,8 +1,8 @@
+import { BG_THEME } from '@/constants/theme';
 import { DriversStandingProps } from '@/model/drivers-standing-model';
 import { OpenF1API } from '@/services/openf1api';
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, Image, StyleSheet, Text, View } from 'react-native';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 export default function DriversStanding() {
 
@@ -30,38 +30,36 @@ export default function DriversStanding() {
 
     return (
 
-        <SafeAreaProvider>
-            <SafeAreaView style={styles.container}>
-                <View style={styles.border}>
-                </View>
-                {loading ? (
-                    <ActivityIndicator size="large" />
-                ) :
-                    (
-                        <View style={styles.content}>
-                            <FlatList style={styles.list}
-                                data={standing}
-                                numColumns={1}
-                                showsVerticalScrollIndicator={false}
-                                renderItem={
-                                    ({ item }) => (
-                                        <View style={[styles.standing, { borderColor: `#${item.Constructors.color}` }]}>
 
-                                            <Text style={[styles.cell, styles.position]}>{item.position}</Text>
-                                            <Image source={{ uri: item.Driver.headshot_url }} style={styles.head} />
-                                            <Text style={[styles.cell, styles.driver]}> {item.Driver.name_acronym}</Text>
-                                            <Text style={[styles.cell, styles.points]}>{item.points}</Text>
-                                        </View>
-                                    )
-                                }
-                                keyExtractor={(item, index) => index.toString()}
-                            />
-                        </View>
+        <View style={styles.container}>
+            {loading ? (
+                <ActivityIndicator size="large" />
+            ) :
+                (
+                    <View style={styles.content}>
+                        <FlatList style={styles.list}
+                            data={standing}
+                            numColumns={1}
+                            showsVerticalScrollIndicator={false}
+                            renderItem={
+                                ({ item }) => (
+                                    <View style={[styles.standing, { borderColor: `#${item.Constructors.color}` }]}>
 
-                    )
-                }
-            </SafeAreaView>
-        </SafeAreaProvider>
+                                        <Text style={[styles.cell, styles.position]}>{item.position}</Text>
+                                        <Image source={{ uri: item.Driver.headshot_url }} style={styles.head} />
+                                        <Text style={[styles.cell, styles.driver]}> {item.Driver.name_acronym}</Text>
+                                        <Text style={[styles.cell, styles.points]}>{item.points}</Text>
+                                    </View>
+                                )
+                            }
+                            keyExtractor={(item, index) => index.toString()}
+                        />
+                    </View>
+
+                )
+            }
+        </View>
+
     )
 }
 
@@ -70,7 +68,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 5,
-        backgroundColor: "#222222ff",
+        backgroundColor: BG_THEME,
         paddingTop: 10
     },
     content: {
@@ -111,17 +109,6 @@ const styles = StyleSheet.create({
         textAlign: "right",
         alignContent: "flex-end",
         justifyContent: "flex-end",
-    },
-    border: {
-        borderTopWidth: 5,
-        borderTopColor: "#C12D14",
-        backgroundColor: "#222222ff",
-        padding: 5
-    }, main_text_race: {
-        color: "#fff",
-        fontSize: 25,
-        fontFamily: "f1-regular",
-        textAlign: 'center'
     },
     head: {
         width: 30,

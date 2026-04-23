@@ -1,3 +1,4 @@
+import AntDesign from '@expo/vector-icons/AntDesign';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { Tabs } from 'expo-router';
 
@@ -7,12 +8,15 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: 'dark',
-        headerShown: true
+        headerShown: true,
+        tabBarStyle: {
+          backgroundColor: "#141414ff"
+        }
       }}>
       <Tabs.Screen
         name="index"
         options={{
-          tabBarIcon: ({ color }) => <MaterialIcons name="home" size={24} color="black" />,
+          tabBarIcon: ({ color }) => <MaterialIcons name="home" size={24} color="white" />,
           headerShown: false,
           tabBarShowLabel: false,
           title: '',
@@ -21,11 +25,20 @@ export default function TabLayout() {
       <Tabs.Screen
         name="races"
         options={{
-          tabBarIcon: ({ color }) => <MaterialIcons name="people" size={24} color="black" />,
+          tabBarIcon: ({ color }) => <AntDesign name="schedule" size={24} color="white" />,
           headerShown: false,
           tabBarShowLabel: false,
         }}
       />
+      <Tabs.Screen
+        name="standings"
+        options={{
+          tabBarIcon: ({ color }) => <AntDesign name="trophy" size={24} color="white" />,
+          headerShown: false,
+          tabBarShowLabel: false,
+        }}
+      />
+
     </Tabs>
   );
 }

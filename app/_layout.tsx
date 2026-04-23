@@ -1,6 +1,7 @@
 import { TabBarTheme } from '@/constants/theme';
 import { useFonts } from 'expo-font';
 import { Stack } from "expo-router";
+import { StatusBar } from 'react-native';
 
 export default function RootLayout() {
 
@@ -12,28 +13,23 @@ export default function RootLayout() {
   )
 
   return (
-    <Stack
-      screenOptions={TabBarTheme}>
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+    <>
+      <StatusBar barStyle="light-content" backgroundColor="transparent" translucent />
+      <Stack
+        screenOptions={TabBarTheme}>
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
 
-      <Stack.Screen name="race-details" options={{
-        headerShown: true,
-        title: 'Race Schedule',
-      }} />
-      <Stack.Screen name="race-results" options={{
-        headerShown: true,
-        title: 'Session Results',
-      }} />
-      <Stack.Screen name="drivers-standing" options={{
-        headerShown: true,
-        title: 'Drivers Standing',
-      }} />
-      <Stack.Screen name="constructors-standing" options={{
-        headerShown: true,
-        title: 'Constructors Standing',
-      }} />
+        <Stack.Screen name="race-details" options={{
+          headerShown: true,
+          title: 'Race Schedule',
+        }} />
+        <Stack.Screen name="race-results" options={{
+          headerShown: true,
+          title: 'Session Results',
+        }} />
 
-    </Stack>
+      </Stack>
+    </>
   )
 
 }

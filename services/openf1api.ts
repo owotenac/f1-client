@@ -12,13 +12,10 @@ export const BASE_URL_BACKEND_LOCAL = 'http://127.0.0.1:5001'
 
 
 const getBaseURL = () => {
-    if (Platform.OS === 'android') {
-        return BASE_URL_BACKEND;
-    }
     if (Platform.OS === 'web') {
         return BASE_URL_BACKEND_LOCAL
     }
-    // iOS or other platforms
+    // android or iOS or other platforms
     return BASE_URL_BACKEND;
 };
 
