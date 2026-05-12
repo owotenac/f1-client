@@ -15,8 +15,7 @@ import React, { useEffect, useState } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
-const logo = require('../../assets/images/icon.png')
-const banner = require('../../assets/images/back.png')
+
 
 type LastRaceProps = {
   race: RaceProps;
@@ -29,12 +28,10 @@ type LandingDataProps = {
   standings: DriversStandingProps[];
 }
 
-export default function index() {
+export default function Index() {
 
 
   const [landingData, setLandingData] = useState<LandingDataProps | null>(null);
-  const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     const fetchAll = async () => {
       try {
@@ -46,8 +43,6 @@ export default function index() {
         setLandingData({ lastRace, nextRace, standings });
       } catch (error) {
         console.error(error);
-      } finally {
-        setLoading(false);
       }
     };
     fetchAll();
