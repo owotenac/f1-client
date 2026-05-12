@@ -36,6 +36,7 @@ export default function ConstructorsStanding() {
                 (
                     <View style={styles.content}>
                         <FlatList style={styles.list}
+                            showsVerticalScrollIndicator={false}
                             data={standing}
                             numColumns={1}
                             renderItem={
@@ -43,7 +44,9 @@ export default function ConstructorsStanding() {
                                     <View style={[styles.standing, { borderColor: `#${item.Constructor.color}` }]}>
 
                                         <Text style={[styles.cell, styles.position]}>{item.position}</Text>
-                                        <Image source={{ uri: item.Constructor.logo_url }} style={styles.head} />
+                                        <View style={[styles.logoContainer, { backgroundColor: `#${item.Constructor.color}` }]}>
+                                            <Image source={{ uri: item.Constructor.logo_url }} style={styles.head} resizeMode='contain' />
+                                        </View>
                                         <Text style={[styles.cell, styles.driver]}> {item.Constructor.name} </Text>
                                         <Text style={[styles.cell, styles.points]}>{item.points}</Text>
                                     </View>
@@ -80,11 +83,13 @@ const styles = StyleSheet.create({
         margin: 10,
         //borderBottomColor: '#aaa',
         borderBottomWidth: 1,
-        paddingBottom: 10,
-        overflow: 'hidden'
+        paddingBottom: 15,
+        alignContent: "center",
+        alignItems: "center"
+        //overflow: 'hidden'
     },
     position: {
-        width: 90,
+        width: 20,
     },
     time: {
         textAlign: "right",
@@ -107,13 +112,16 @@ const styles = StyleSheet.create({
         justifyContent: "flex-end",
     },
 
-    head: {
+    logoContainer: {
         width: 40,
+        height: 40,
+        borderRadius: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    head: {
+        width: 30,
         height: 30,
-        resizeMode: 'cover',
-        position: 'absolute',
-        top: 0,
-        left: 30
     }
 }
 )

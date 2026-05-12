@@ -47,7 +47,11 @@ export default function DriversStanding() {
 
                                         <Text style={[styles.cell, styles.position]}>{item.position}</Text>
                                         <Image source={{ uri: item.Driver.headshot_url }} style={styles.head} />
-                                        <Text style={[styles.cell, styles.driver]}> {item.Driver.name_acronym}</Text>
+                                        <View>
+                                            <Text style={[styles.cell, styles.driver]}> {item.Driver.name_acronym}</Text>
+                                            <Text style={styles.team_name}>{item.Constructors.name}</Text>
+                                        </View>
+
                                         <Text style={[styles.cell, styles.points]}>{item.points}</Text>
                                     </View>
                                 )
@@ -85,10 +89,12 @@ const styles = StyleSheet.create({
         //borderBottomColor: '#aaa',
         borderBottomWidth: 1,
         paddingBottom: 10,
-        overflow: 'hidden'
+        overflow: 'hidden',
+        alignContent: "center",
+        alignItems: "center"
     },
     position: {
-        width: 40,
+        width: 20,
     },
     time: {
         textAlign: "right",
@@ -111,10 +117,15 @@ const styles = StyleSheet.create({
         justifyContent: "flex-end",
     },
     head: {
-        width: 30,
-        height: 30,
+        width: 40,
+        height: 40,
         borderRadius: 15,
         marginHorizontal: 10,
+    },
+    team_name: {
+        fontFamily: "f1-regular",
+        fontSize: 11,
+        color: "#797979ff",
     },
 }
 )

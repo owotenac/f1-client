@@ -1,3 +1,4 @@
+import { CARD_THEME, RED_THEME } from '@/constants/theme';
 import { useAppStore } from '@/model/filter';
 import { SessionProps } from '@/model/session-model';
 import { useRouter } from 'expo-router';
@@ -34,24 +35,25 @@ const SessionCard = (session: SessionProps) => {
 const styles = StyleSheet.create({
   card: {
     flex: 1,
-    backgroundColor: "#303030",  // toujours le même fond
-    margin: 5,
-    paddingVertical: 12,
+    backgroundColor: CARD_THEME,  // toujours le même fond
+    margin: 2,
+    paddingVertical: 8,
     paddingBottom: 12,
-    paddingHorizontal: 14,
+    paddingHorizontal: 12,
     borderLeftWidth: 5,
     borderLeftColor: "#555",  // gris par défaut
+    borderRadius: 5
   },
   card_active: {
-    borderLeftColor: "#C12D14",  // seul changement visuel
+    borderLeftColor: RED_THEME,  // seul changement visuel
   },
   text_session_name: {
     color: "#bbbbbb",  // gris par défaut
     fontSize: 20,
-    fontFamily: "f1-regular",
+    //fontFamily: "f1-regular",
   },
   text_session_name_active: {
-    color: "#C12D14",  // rouge seulement si résultats dispo
+    color: "#fff" //RED_THEME,  
   },
   text_date: {
     paddingTop: 10,
@@ -63,7 +65,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 12,
     bottom: 10,
-    color: "#C12D14",
+    color: RED_THEME,
     fontSize: 22,
   },
 });

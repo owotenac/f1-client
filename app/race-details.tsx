@@ -37,8 +37,11 @@ export default function RaceDetails() {
       <SafeAreaView style={styles.container}>
 
         <View style={styles.border}>
-          <Text style={styles.main_text_race}>{currentRace.meeting_official_name}</Text>
-          <Text style={styles.main_text_country}>{currentRace.meeting_name}</Text>
+          <View style={{ flexDirection: 'row', marginTop: 5, gap: 10, alignItems: 'center' }}>
+            <Image style={styles.flag} source={{ uri: currentRace.country_flag }} />
+            <Text style={styles.main_text_race}>{currentRace.meeting_name}</Text>
+          </View>
+          <Text style={styles.main_text_country}>{currentRace.meeting_official_name}</Text>
         </View>
 
         <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
@@ -94,7 +97,7 @@ export default function RaceDetails() {
             </View>
 
             {currentRace.fastest_lap?.time && (
-              <View style={styles.fastest_lap_box}>
+              <View style={styles.circuit_info_box}>
                 <Text style={styles.fastest_lap_label}>Fastest Lap</Text>
                 <Text style={styles.fastest_lap_time}>{currentRace.fastest_lap.time}</Text>
                 <Text style={styles.fastest_lap_driver}>
@@ -117,10 +120,14 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   border: {
-    borderTopWidth: 5,
-    borderTopColor: '#C12D14',
+    //borderTopWidth: 5,
+    //borderTopColor: '#C12D14',
     backgroundColor: BG_THEME,
     padding: 5,
+    gap: 10,
+    alignItems: "flex-start",
+    marginBottom: 10
+
   },
   scrollContent: {
     paddingVertical: 20,
@@ -143,8 +150,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   main_text_country: {
-    color: '#fff',
-    fontSize: 20,
+    color: '#b9b9b9ff',
+    fontSize: 12,
     fontFamily: 'f1-regular',
     textAlign: 'center',
   },
@@ -152,10 +159,10 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 18,
     fontFamily: 'f1-regular',
-    textAlign: 'center',
+    //textAlign: 'center',
   },
   circuitContainer: {
-    borderWidth: 2,
+    borderWidth: 1,
     borderRadius: 15,
     borderColor: '#645e5cff',
     backgroundColor: '#222222ff',
@@ -178,41 +185,37 @@ const styles = StyleSheet.create({
     flex: 1,
     borderWidth: 2,
     borderRadius: 15,
-    borderColor: '#C12D14',
-    padding: 10,
-    height: 80,
-    justifyContent: 'space-between',
-  },
-  fastest_lap_box: {
-    borderWidth: 2,
-    borderRadius: 15,
-    borderColor: '#C12D14',
-    padding: 12,
-    alignItems: 'center',
-    gap: 4,
+    borderColor: '#5c170bff',
+    padding: 15,
+    //height: 60,
+    //justifyContent: 'space-between',
   },
   fastest_lap_label: {
     color: '#dfdfdfff',
     fontSize: 12,
     fontFamily: 'f1-regular',
-    textAlign: 'center',
+    //textAlign: 'center',
   },
   fastest_lap_time: {
     color: '#fff',
     fontSize: 22,
     fontFamily: 'f1-regular',
-    textAlign: 'center',
+    //textAlign: 'center',
   },
   fastest_lap_driver: {
     color: '#dfdfdfff',
     fontSize: 12,
     fontFamily: 'f1-regular',
-    textAlign: 'center',
+    //textAlign: 'center',
   },
   main_text_circuit_info: {
     color: '#dfdfdfff',
     fontSize: 12,
     fontFamily: 'f1-regular',
-    textAlign: 'center',
+    //textAlign: 'center',
+  },
+  flag: {
+    width: 50,
+    height: 30
   }
 });

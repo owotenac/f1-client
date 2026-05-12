@@ -1,4 +1,4 @@
-import { BG_THEME } from '@/constants/theme';
+import { BG_THEME, RED_THEME } from '@/constants/theme';
 import { Skeleton } from 'moti/skeleton';
 import { StyleSheet, View } from 'react-native';
 
@@ -37,8 +37,7 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15,
         borderWidth: 0.5,
-        borderColor: "#7e1b09ff",
-        //backgroundColor: "#220d0dff",
+        borderColor: RED_THEME,
         padding: 25,
         paddingVertical: 25,
         gap: 10,

@@ -1,3 +1,4 @@
+import { CARD_THEME, RED_THEME } from '@/constants/theme';
 import { useAppStore } from '@/model/filter';
 import { RaceProps } from '@/model/race-model';
 import { useRouter } from 'expo-router';
@@ -45,8 +46,16 @@ const NextRace = (race: RaceProps) => {
     }
     return (
         <View style={styles.main_container}>
+            <View style={{ flexDirection: 'row', alignItems: 'flex-start', flex: 1, justifyContent: 'space-between' }}>
+                <View style={{ borderLeftWidth: 5, borderLeftColor: RED_THEME, paddingLeft: 10 }}>
+                    <Text style={styles.mainText}>Next Race</Text>
+                </View>
+                <TouchableOpacity onPress={() => { raceDetails() }}>
+                    <Text style={styles.text_schedule}>Race Schedule</Text>
+                </TouchableOpacity>
+            </View>
+
             <View style={styles.container}>
-                <Text style={styles.text_circuit}>{race?.meeting_name}</Text>
                 <View style={{ flexDirection: 'row', gap: 10, justifyContent: 'center' }}>
                     <Image
                         style={styles.flag}
@@ -55,12 +64,9 @@ const NextRace = (race: RaceProps) => {
                     <Text style={styles.text_country}>{race?.country_name}</Text>
                     <Text style={styles.text_date}>{race?.display_date}</Text>
                 </View>
+                <Text style={styles.text_circuit}>{race?.meeting_name}</Text>
                 {timeLeft ? <Text style={styles.text_time}>{timeLeft}</Text> : null}
             </View>
-            <TouchableOpacity onPress={() => { raceDetails() }} style={{ flexDirection: 'row', gap: 10, backgroundColor: "#7c7b7bff", padding: 15, justifyContent: 'space-between' }}>
-                <Text style={styles.text_schedule}>Race Schedule</Text>
-                <Text style={styles.text_schedule}>›</Text>
-            </TouchableOpacity>
         </View>
     )
 }
@@ -69,30 +75,21 @@ export default NextRace
 
 const styles = StyleSheet.create({
     main_container: {
+        padding: 10,
         margin: 5,
-    },
-    container: {
-        borderTopLeftRadius: 15,
-        borderTopRightRadius: 15,
-        borderBottomColor: "#242424ff",
-        borderWidth: 0.5,
-        borderColor: "#242424ff",
-        backgroundColor: "#242424ff",
-        padding: 25,
-        flexDirection: 'column',
-        justifyContent: "space-between",
-        alignContent: 'center',
-        paddingVertical: 25,
         gap: 10
     },
-    mainText: {
-        fontFamily: "f1-regular",
-        fontSize: 13,
-        color: "#fc2020ff",
-        textTransform: "uppercase"
+    container: {
+        borderRadius: 10,
+        borderWidth: 0.5,
+        borderColor: RED_THEME,
+        backgroundColor: CARD_THEME,
+        padding: 15,
+        alignItems: "flex-start",
+        gap: 15
     },
     text_circuit: {
-        fontFamily: "f1-bold",
+        fontFamily: "f1-regular",
         fontSize: 22,
         color: "#fff",
         textTransform: "uppercase",
@@ -110,9 +107,10 @@ const styles = StyleSheet.create({
     },
     text_time: {
         fontFamily: "f1-regular",
-        fontSize: 14,
+        fontSize: 15,
         color: "#fff",
         textAlign: "center"
+
     },
     flag: {
         width: 30,
@@ -120,7 +118,13 @@ const styles = StyleSheet.create({
     },
     text_schedule: {
         fontFamily: "f1-regular",
-        fontSize: 12,
-        color: "#ffffffff",
-    }
+        fontSize: 11,
+        color: "#f00",
+    },
+    mainText: {
+        fontFamily: "f1-regular",
+        fontSize: 13,
+        color: "#fff",
+        textTransform: "uppercase"
+    },
 })

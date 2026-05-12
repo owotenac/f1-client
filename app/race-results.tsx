@@ -1,4 +1,4 @@
-import { BG_THEME } from '@/constants/theme';
+import { BG_THEME, RED_THEME } from '@/constants/theme';
 import { useAppStore } from '@/model/filter';
 import { SessionResultProps } from '@/model/session-result-model';
 import { OpenF1API } from '@/services/openf1api';
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
     },
     border: {
         borderTopWidth: 5,
-        borderTopColor: "#C12D14",
+        borderTopColor: RED_THEME,
         backgroundColor: BG_THEME,
         padding: 5
     },
@@ -200,7 +200,7 @@ const styles = StyleSheet.create({
         //width: 100,
         fontSize: 10,
         fontFamily: 'f1-regular',
-        color: "#525252"
+        color: "#838383ff"
     },
     driver_info: {
         flex: 1,
@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
     },
     team_text: {
         fontSize: 12,
-        color: "#525252"
+        color: "#8b8b8bff"
     },
     time_view: {
         alignItems: 'flex-end',

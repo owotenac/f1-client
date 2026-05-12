@@ -1,3 +1,4 @@
+import Header from '@/components/header';
 import RaceCard from '@/components/race-card';
 import { BG_THEME } from '@/constants/theme';
 import { RaceProps } from '@/model/race-model';
@@ -38,7 +39,8 @@ export default function Races() {
 
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <Header title="Races Schedule" />
+        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ gap: 5, padding: 15 }}>
           {loading &&
             <ActivityIndicator size="large" />
           }
@@ -55,7 +57,6 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    padding: 15,
     backgroundColor: BG_THEME
 
   }

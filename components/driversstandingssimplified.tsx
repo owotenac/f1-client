@@ -1,3 +1,4 @@
+import { CARD_THEME } from '@/constants/theme';
 import { DriversStandingProps } from '@/model/drivers-standing-model';
 import { router } from 'expo-router';
 import React from 'react';
@@ -8,20 +9,29 @@ const DriversStandingsSimplified = ({ standings }: { standings: DriversStandingP
 
     return (
         <View style={styles.main_container}>
+            <View style={{ flexDirection: 'row', alignItems: 'flex-start', flex: 1, justifyContent: 'space-between' }}>
+                <View style={{ borderLeftWidth: 5, borderLeftColor: "rgba(255, 0, 0, 1)", paddingLeft: 10 }}>
+                    <Text style={styles.mainText}>Drivers Standings</Text>
+                </View>
+                <TouchableOpacity onPress={() => { router.push('/(tabs)/standings') }}>
+                    <Text style={styles.text_schedule}>Full Standings</Text>
+                </TouchableOpacity>
+            </View>
+
             <View style={styles.container}>
                 {standings?.slice(0, 3).map((result) => (
                     <View style={styles.row} key={result.Driver.driver_number}>
                         <Text style={[styles.cell, styles.position]}>{result.position}</Text>
                         <Image source={{ uri: result.Driver.headshot_url }} style={styles.head} />
-                        <Text style={[styles.cell, styles.driver]}> {result.Driver.name_acronym}</Text>
+                        <View style={{ flex: 1 }}>
+                            <Text style={[styles.cell, styles.driver]}> {result.Driver.name_acronym}</Text>
+                            <Text style={[styles.cell, styles.driver_team]}> {result.Driver.team_name}</Text>
+                        </View>
+
                         <Text style={[styles.cell, styles.points]}>{result.points}</Text>
                     </View>
                 ))}
             </View>
-            <TouchableOpacity onPress={() => { router.push('/(tabs)/standings') }} style={{ flexDirection: 'row', gap: 10, backgroundColor: "#7c7b7bff", padding: 15, justifyContent: 'space-between' }}>
-                <Text style={styles.result_text}>Full Standings</Text>
-                <Text style={styles.result_text}>›</Text>
-            </TouchableOpacity>
         </View>
     );
 };
@@ -30,16 +40,18 @@ export default DriversStandingsSimplified;
 
 const styles = StyleSheet.create({
     main_container: {
+        padding: 10,
         margin: 5,
+        gap: 10
     },
     container: {
-        backgroundColor: "#242424ff",
-        borderTopLeftRadius: 15,
-        borderTopRightRadius: 15,
+        borderRadius: 10,
         borderWidth: 0.5,
-        borderColor: "#242424ff",
-        padding: 10,
-        borderBottomColor: "#242424ff",
+        borderColor: "#790000ff",
+        backgroundColor: CARD_THEME,
+        padding: 15,
+        //alignItems: "flex-start",
+        gap: 15
     },
     header: {
         flexDirection: 'row',
@@ -72,8 +84,8 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     head: {
-        width: 30,
-        height: 30,
+        width: 40,
+        height: 40,
         borderRadius: 15,
         marginHorizontal: 10,
     },
@@ -81,6 +93,13 @@ const styles = StyleSheet.create({
         flex: 1,
         textAlign: 'left',
         paddingHorizontal: 10,
+    },
+    driver_team: {
+        flex: 1,
+        textAlign: 'left',
+        paddingHorizontal: 10,
+        color: "#9b9b9bff",
+        fontSize: 10,
     },
     points: {
         width: 40,
@@ -90,5 +109,16 @@ const styles = StyleSheet.create({
         fontFamily: "f1-regular",
         fontSize: 12,
         color: "#ffffffff",
-    }
+    },
+    mainText: {
+        fontFamily: "f1-regular",
+        fontSize: 13,
+        color: "#fff",
+        textTransform: "uppercase"
+    },
+    text_schedule: {
+        fontFamily: "f1-regular",
+        fontSize: 11,
+        color: "#f00",
+    },
 });

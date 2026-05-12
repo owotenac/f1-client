@@ -1,20 +1,22 @@
 import DriversStandingsSimplified from '@/components/driversstandingssimplified';
+import Header from '@/components/header';
 import LastRace from '@/components/last-race';
 import NextRace from '@/components/next-race';
 import { DriversStandingsSimplifiedSkeleton } from '@/components/squeleton/driversstandingssimplified-squeleton';
 import { LastRaceSkeleton } from '@/components/squeleton/last-race-squeleton';
 import { NextRaceSkeleton } from '@/components/squeleton/next-race-squeleton';
-import { BG_THEME } from '@/constants/theme';
+import { BG_THEME, RED_THEME } from '@/constants/theme';
 import { DriversStandingProps } from '@/model/drivers-standing-model';
 import { RaceProps } from '@/model/race-model';
 import { SessionProps } from '@/model/session-model';
 import { SessionResultProps } from '@/model/session-result-model';
 import { OpenF1API } from '@/services/openf1api';
 import React, { useEffect, useState } from 'react';
-import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 const logo = require('../../assets/images/icon.png')
+const banner = require('../../assets/images/back.png')
 
 type LastRaceProps = {
   race: RaceProps;
@@ -55,32 +57,24 @@ export default function index() {
 
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
-        <View style={styles.header}>
-          <View style={{ flexDirection: "row", alignItems: "center", gap: 10, alignSelf: "flex-start" }}>
-            <Image source={logo} style={styles.image} />
-            <Text style={styles.headerText_title}>FastTrack</Text>
-          </View>
-          <Text style={styles.headerText}>2026 Formula 1 Season</Text>
-        </View>
+        <Header title="Season Highlights" />
+
         <ScrollView
           style={styles.scroll}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{
-            gap: 10,
+            gap: 20,
           }}
 
         >
 
-          <Text style={styles.mainText}>Next Race</Text>
           {!landingData ? <NextRaceSkeleton /> :
             <NextRace
               {...landingData.nextRace} />}
 
-          <Text style={styles.mainText}>Last Race</Text>
           {!landingData ? <LastRaceSkeleton /> : <LastRace
             {...landingData.lastRace} />}
 
-          <Text style={styles.mainText}>Drivers Standings</Text>
           {!landingData ? <DriversStandingsSimplifiedSkeleton /> : <DriversStandingsSimplified
             standings={landingData.standings} />}
         </ScrollView>
@@ -94,7 +88,7 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    padding: 15,
+    //padding: 15,
     backgroundColor: BG_THEME,
     gap: 10,
     alignContent: 'center',
@@ -116,8 +110,7 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     paddingVertical: 25,
     borderTopWidth: 5,
-    borderTopColor: "#C12D14"
-
+    borderTopColor: RED_THEME
   },
   text: {
     fontFamily: "f1-regular",
@@ -130,9 +123,10 @@ const styles = StyleSheet.create({
 
   },
   header: {
-    alignItems: 'center',
+    alignItems: 'flex-start',
     marginTop: 10,
     marginBottom: 20,
+    //width: "100%",
   },
   headerText: {
     fontFamily: "f1-regular",
@@ -141,16 +135,20 @@ const styles = StyleSheet.create({
   },
   headerText_title: {
     fontFamily: "f1-bold",
-    fontSize: 25,
+    fontSize: 20,
     color: "#fff",
   },
   mainText: {
     fontFamily: "f1-regular",
     fontSize: 13,
-    color: "#fc2020ff",
+    color: "#fff",
     textTransform: "uppercase"
   },
   scroll: {
     gap: 10,
+  },
+  banner: {
+    width: 300,
+    height: 300,
   }
 })
