@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "FastTrack",
-    "slug": "fasttrack",
+    "name": "Sector F1",
+    "slug": "sectorf1",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "fasttrack",
+    "scheme": "sectorf1",
     "userInterfaceStyle": "automatic",
     "ios": {
       "supportsTablet": true
@@ -18,7 +18,7 @@
         "monochromeImage": "./assets/images/icon.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.owoignier.fasttrack"
+      "package": "com.owoignier.sectorf1"
     },
     "web": {
       "output": "static",
@@ -45,9 +45,7 @@
     },
     "extra": {
       "router": {},
-      "eas": {
-        "projectId": "bbebdf2c-69d3-4258-8dd0-4e5ec712e5d0"
-      }
+      "eas": {}
     }
   }
 }

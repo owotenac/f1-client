@@ -79,14 +79,13 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     standing: {
+        width: '100%',
         flexDirection: 'row',
         margin: 10,
-        //borderBottomColor: '#aaa',
         borderBottomWidth: 1,
         paddingBottom: 15,
         alignContent: "center",
         alignItems: "center"
-        //overflow: 'hidden'
     },
     position: {
         width: 20,
@@ -118,6 +117,7 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         justifyContent: 'center',
         alignItems: 'center',
+        marginRight: 10
     },
     head: {
         width: 30,

@@ -25,17 +25,17 @@ const RaceCard = (props: RaceProps) => {
 
 
     return (
-        <TouchableOpacity onPress={() => select(props)}>
+        <TouchableOpacity style={{ width: '100%' }} onPress={() => select(props)}>
             <View style={[styles.card, { borderLeftColor: isPassed ? "#519653ff" : RED_THEME }]}>
                 <View style={{ width: 60, alignItems: "center" }}>
                     <Text style={styles.text_date}>{day}</Text>
                     <Text style={styles.text_date}>{month}</Text>
                 </View>
-                <View style={{ flexDirection: 'row', marginTop: 5, gap: 10, alignItems: 'center' }}>
+                <View style={{ flex: 1, flexDirection: 'row', marginTop: 5, gap: 10, alignItems: 'center' }}>
                     <Image style={styles.image} source={{ uri: props.country_flag }} />
-                    <View style={{ gap: 5, justifyContent: 'center' }}>
-                        <Text style={styles.text_country_name}>{props.meeting_name}</Text>
-                        <Text style={styles.text_meeting_name}>{props.country_name} - {props.circuit_short_name}</Text>
+                    <View style={{ flex: 1, gap: 5, justifyContent: 'center' }}>
+                        <Text style={styles.text_country_name} numberOfLines={1} ellipsizeMode="tail">{props.meeting_name}</Text>
+                        <Text style={styles.text_meeting_name} numberOfLines={1} ellipsizeMode="tail">{props.country_name} - {props.circuit_short_name}</Text>
                     </View>
                 </View>
             </View>
@@ -56,14 +56,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderLeftWidth: 5,
         borderLeftColor: RED_THEME,
-        gap: 10
-
+        gap: 10,
+        flex: 1
     },
 
     text_meeting_name: {
         color: "#b1b1b1ff",
         fontSize: 10,
-        fontFamily: "f1-regular"
+        fontFamily: "f1-regular",
     },
     text_country_name: {
         fontFamily: "f1-bold",

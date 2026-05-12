@@ -1,10 +1,12 @@
 import SessionCard from '@/components/session-card';
+import SessionCardSqueleton from '@/components/squeleton/session-card-squeleton';
 import { BG_THEME } from '@/constants/theme';
 import { useAppStore } from '@/model/filter';
 import { SessionProps } from '@/model/session-model';
 import { OpenF1API } from '@/services/openf1api';
+import { Hash, Ruler, RulerDimensionLine, Spline, Timer } from 'lucide-react-native';
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 export default function RaceDetails() {
@@ -37,16 +39,26 @@ export default function RaceDetails() {
       <SafeAreaView style={styles.container}>
 
         <View style={styles.border}>
-          <View style={{ flexDirection: 'row', marginTop: 5, gap: 10, alignItems: 'center' }}>
+          <View style={{ width: '100%', flexDirection: 'row', marginTop: 5, gap: 10, alignItems: 'center' }}>
             <Image style={styles.flag} source={{ uri: currentRace.country_flag }} />
-            <Text style={styles.main_text_race}>{currentRace.meeting_name}</Text>
+            <Text style={styles.main_text_race} >{currentRace.meeting_name}</Text>
           </View>
-          <Text style={styles.main_text_country}>{currentRace.meeting_official_name}</Text>
+          <Text style={styles.meeting_official_name}>{currentRace.meeting_official_name}</Text>
         </View>
 
         <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
           {loading ? (
-            <ActivityIndicator size="large" style={{ marginTop: 40 }} />
+            <View style={styles.grid}>
+              {[...Array(3)].map((_, rowIndex) => (
+                <View key={rowIndex} style={styles.row}>
+                  {[...Array(2)].map((_, i) => (
+                    <View key={i} style={styles.cell}>
+                      <SessionCardSqueleton />
+                    </View>
+                  ))}
+                </View>
+              ))}
+            </View>
           ) : (
             <View style={styles.grid}>
               {sessionPairs.map((pair, rowIndex) => (
@@ -77,32 +89,47 @@ export default function RaceDetails() {
           <View style={styles.circuitInfoContainer}>
             <View style={styles.statsRow}>
               <View style={styles.circuit_info_box}>
-                <Text style={styles.text_info}>{currentRace.circuit_length_km}</Text>
-                <Text style={styles.main_text_circuit_info}>Circuit Length (km)</Text>
+                <Ruler strokeWidth={1} color="white" />
+                <View >
+                  <Text style={styles.text_info}>{currentRace.circuit_length_km}</Text>
+                  <Text style={styles.main_text_circuit_info}>Circuit Length (km)</Text>
+                </View>
               </View>
               <View style={styles.circuit_info_box}>
-                <Text style={styles.text_info}>{currentRace.number_of_laps}</Text>
-                <Text style={styles.main_text_circuit_info}>Number of Laps</Text>
+                <Hash strokeWidth={1} color="white" />
+                <View>
+                  <Text style={styles.text_info}>{currentRace.number_of_laps}</Text>
+                  <Text style={styles.main_text_circuit_info}>Number of Laps</Text>
+                </View>
               </View>
             </View>
             <View style={styles.statsRow}>
               <View style={styles.circuit_info_box}>
-                <Text style={styles.text_info}>{currentRace.race_distance_km}</Text>
-                <Text style={styles.main_text_circuit_info}>Race Distance (km)</Text>
+                <RulerDimensionLine strokeWidth={1} color="white" />
+                <View>
+                  <Text style={styles.text_info}>{currentRace.race_distance_km}</Text>
+                  <Text style={styles.main_text_circuit_info}>Race Distance (km)</Text>
+                </View>
               </View>
               <View style={styles.circuit_info_box}>
-                <Text style={styles.text_info}>{currentRace.number_of_corners}</Text>
-                <Text style={styles.main_text_circuit_info}>Number of Corners</Text>
+                <Spline strokeWidth={1} color="white" />
+                <View>
+                  <Text style={styles.text_info}>{currentRace.number_of_corners}</Text>
+                  <Text style={styles.main_text_circuit_info}>Number of Corners</Text>
+                </View>
               </View>
             </View>
 
             {currentRace.fastest_lap?.time && (
               <View style={styles.circuit_info_box}>
-                <Text style={styles.fastest_lap_label}>Fastest Lap</Text>
-                <Text style={styles.fastest_lap_time}>{currentRace.fastest_lap.time}</Text>
-                <Text style={styles.fastest_lap_driver}>
-                  {currentRace.fastest_lap.driver} · {currentRace.fastest_lap.year}
-                </Text>
+                <Timer strokeWidth={1} color="white" />
+                <View>
+                  <Text style={styles.fastest_lap_label}>Fastest Lap</Text>
+                  <Text style={styles.fastest_lap_time}>{currentRace.fastest_lap.time}</Text>
+                  <Text style={styles.fastest_lap_driver}>
+                    {currentRace.fastest_lap.driver} · {currentRace.fastest_lap.year}
+                  </Text>
+                </View>
               </View>
             )}
           </View>
@@ -120,14 +147,11 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   border: {
-    //borderTopWidth: 5,
-    //borderTopColor: '#C12D14',
     backgroundColor: BG_THEME,
     padding: 5,
     gap: 10,
-    alignItems: "flex-start",
-    marginBottom: 10
-
+    marginBottom: 10,
+    width: '100%'
   },
   scrollContent: {
     paddingVertical: 20,
@@ -144,12 +168,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   main_text_race: {
+    flex: 1,
     color: '#fff',
     fontSize: 25,
     fontFamily: 'f1-regular',
-    textAlign: 'center',
   },
-  main_text_country: {
+  meeting_official_name: {
     color: '#b9b9b9ff',
     fontSize: 12,
     fontFamily: 'f1-regular',
@@ -187,6 +211,9 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     borderColor: '#5c170bff',
     padding: 15,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10
     //height: 60,
     //justifyContent: 'space-between',
   },
@@ -210,7 +237,7 @@ const styles = StyleSheet.create({
   },
   main_text_circuit_info: {
     color: '#dfdfdfff',
-    fontSize: 12,
+    fontSize: 11,
     fontFamily: 'f1-regular',
     //textAlign: 'center',
   },

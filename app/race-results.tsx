@@ -1,9 +1,9 @@
-import { BG_THEME, RED_THEME } from '@/constants/theme';
+import { BG_THEME, CARD_THEME } from '@/constants/theme';
 import { useAppStore } from '@/model/filter';
 import { SessionResultProps } from '@/model/session-result-model';
 import { OpenF1API } from '@/services/openf1api';
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, FlatList, Image, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 export default function RaceResult() {
@@ -99,8 +99,15 @@ export default function RaceResult() {
         <SafeAreaProvider>
             <SafeAreaView style={styles.container}>
                 <View style={styles.border}>
-                    <Text style={styles.main_text_race}>{currentRace.meeting_name}</Text>
-                    <Text style={styles.main_text_country}>{currentSession.session_name}</Text>
+                    <View style={{ flexDirection: 'row', marginTop: 5, gap: 10, alignItems: 'center' }}>
+                        <Image style={styles.flag} source={{ uri: currentRace.country_flag }} />
+                        <Text style={styles.main_text_race}>{currentRace.meeting_name}</Text>
+                    </View>
+                    <Text style={styles.meeting_official_name}>{currentRace.meeting_official_name}</Text>
+                    <View style={{ alignSelf: 'center', padding: 5 }}>
+                        <Text style={styles.session_text}>{currentSession.session_name}</Text>
+                    </View>
+
                 </View>
                 {loading ? (
                     <ActivityIndicator size="large" />
@@ -146,27 +153,31 @@ const styles = StyleSheet.create({
     },
     content: {
         flex: 1,
-        marginTop: 30,
+        marginTop: 10,
         margin: 10,
+        backgroundColor: CARD_THEME,
+        borderRadius: 10
         //alignItems: 'center',
     },
     main_text_race: {
         color: "#fff",
         fontSize: 25,
         fontFamily: "f1-regular",
-        textAlign: 'center'
+        //textAlign: 'center'
     },
-    main_text_country: {
+    session_text: {
         color: "#fff",
         fontSize: 20,
         fontFamily: "f1-regular",
         textAlign: 'center'
     },
     border: {
-        borderTopWidth: 5,
-        borderTopColor: RED_THEME,
         backgroundColor: BG_THEME,
-        padding: 5
+        padding: 5,
+        gap: 10,
+        alignItems: "flex-start",
+        marginBottom: 10
+
     },
     list: {
         flex: 1,
@@ -215,6 +226,16 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end',
         marginRight: 10
 
-    }
+    },
+    flag: {
+        width: 50,
+        height: 30
+    },
+    meeting_official_name: {
+        color: '#b9b9b9ff',
+        fontSize: 12,
+        fontFamily: 'f1-regular',
+        textAlign: 'center',
+    },
 
 })

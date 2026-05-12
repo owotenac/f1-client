@@ -40,7 +40,7 @@ export default function Races() {
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
         <Header title="Races Schedule" />
-        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ gap: 5, padding: 15 }}>
+        <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false} contentContainerStyle={{ gap: 5, padding: 15 }}>
           {loading &&
             <ActivityIndicator size="large" />
           }

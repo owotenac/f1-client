@@ -29,7 +29,7 @@ const NextRace = (race: RaceProps) => {
             const m = Math.floor((diff % 3600000) / 60000);
             const s = Math.floor((diff % 60000) / 1000);
 
-            setTimeLeft(`${d}j ${h}h ${m}m ${s}s`);
+            setTimeLeft(`${d}d ${h}h ${m}m ${s}s`);
         };
 
         computeTimeLeft();
@@ -64,8 +64,10 @@ const NextRace = (race: RaceProps) => {
                     <Text style={styles.text_country}>{race?.country_name}</Text>
                     <Text style={styles.text_date}>{race?.display_date}</Text>
                 </View>
-                <Text style={styles.text_circuit}>{race?.meeting_name}</Text>
-                {timeLeft ? <Text style={styles.text_time}>{timeLeft}</Text> : null}
+                <View style={{ alignItems: 'center', justifyContent: 'center', gap: 10 }}>
+                    <Text style={styles.text_circuit}>{race?.meeting_name}</Text>
+                    {timeLeft ? <Text style={styles.text_time}>{timeLeft}</Text> : null}
+                </View>
             </View>
         </View>
     )
@@ -107,7 +109,7 @@ const styles = StyleSheet.create({
     },
     text_time: {
         fontFamily: "f1-regular",
-        fontSize: 15,
+        fontSize: 16,
         color: "#fff",
         textAlign: "center"
 
