@@ -44,6 +44,9 @@ export default function RaceResult() {
         if (typeof item.duration === 'number')
             return formatTime(item.duration);
 
+        if (typeof item.gap_to_leader === 'string')
+            return item.gap_to_leader;
+
         return '-'
     }
 

@@ -31,15 +31,17 @@ export default function RootLayout() {
       <StatusBar barStyle="light-content" backgroundColor="transparent" translucent />
       <Stack
         screenOptions={TabBarTheme}>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false, title: 'Home', headerBackTitle: "Back" }} />
 
         <Stack.Screen name="race-details" options={{
           headerShown: true,
           title: 'Race Schedule',
+          headerBackTitle: "Back"
         }} />
         <Stack.Screen name="race-results" options={{
           headerShown: true,
           title: 'Session Results',
+          headerBackTitle: "Back"
         }} />
 
       </Stack>

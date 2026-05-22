@@ -7,7 +7,7 @@ import { RaceProps } from '../model/race-model';
 import { SessionResultProps } from '../model/session-result-model';
 import { SessionProps } from './../model/session-model';
 
-export const BASE_URL_BACKEND = 'https://f1-server.vercel.app/'
+export const BASE_URL_BACKEND = 'https://f1-server-production.up.railway.app'//'https://f1-server.vercel.app/'
 export const BASE_URL_BACKEND_LOCAL = 'http://127.0.0.1:5001'
 
 
@@ -24,7 +24,7 @@ export class OpenF1API {
     static api = axios.create({
         baseURL: getBaseURL(),
         //baseURL: '',
-        timeout: 8000,
+        //timeout: 8000,
     });
 
     static getRaces = async (season: string) => {
