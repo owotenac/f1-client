@@ -23,7 +23,7 @@
         "monochromeImage": "./assets/images/icon.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.owoignier.sectorf1"
+      "package": "com.e2digitalstudio.sectorf1"
     },
     "web": {
       "output": "static",
@@ -57,7 +57,9 @@
       "reactCompiler": true
     },
     "extra": {
-      "router": {},
+      "router": {
+        "origin": "https://www.e2digitalstudio.com"
+      },
       "eas": {
         "projectId": "a01e2447-5b76-4e27-b102-f03a75d4f630"
       }
@@ -67,6 +69,7 @@
     },
     "updates": {
       "url": "https://u.expo.dev/a01e2447-5b76-4e27-b102-f03a75d4f630"
-    }
+    },
+    "owner": "e2-digital-studio"
   }
 }
