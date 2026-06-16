@@ -1,5 +1,5 @@
-import { CARD_THEME, RED_THEME } from '@/constants/theme';
 import { useAppStore } from '@/model/filter';
+import { CARD_THEME, RED_THEME } from '@/shared/f1/constants/theme';
 import { SessionProps } from '@/shared/f1/models/session-model';
 import { useRouter } from 'expo-router';
 import React from 'react';

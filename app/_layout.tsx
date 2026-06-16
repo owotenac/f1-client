@@ -1,9 +1,10 @@
-import { TabBarTheme } from '@/constants/theme';
+import { TabBarTheme } from '@/shared/f1/constants/theme';
 import { useFonts } from 'expo-font';
 import { Stack } from "expo-router";
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import { StatusBar } from 'react-native';
+import { RootSiblingParent } from 'react-native-root-siblings';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -30,7 +31,7 @@ export default function RootLayout() {
   }
 
   return (
-    <>
+    <RootSiblingParent>
       <StatusBar barStyle="light-content" backgroundColor="transparent" translucent />
       <Stack
         screenOptions={TabBarTheme}>
@@ -48,6 +49,6 @@ export default function RootLayout() {
         }} />
 
       </Stack>
-    </>
+    </RootSiblingParent>
   );
 }

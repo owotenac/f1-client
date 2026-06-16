@@ -1,8 +1,8 @@
-import { CARD_THEME } from '@/constants/theme';
 import { useAppStore } from '@/model/filter';
-import { SessionResultProps } from '@/model/session-result-model';
+import { CARD_THEME } from '@/shared/f1/constants/theme';
 import { RaceProps } from '@/shared/f1/models/race-model';
 import { SessionProps } from '@/shared/f1/models/session-model';
+import { SessionResultProps } from '@/shared/f1/models/session-result-model';
 import { useRouter } from 'expo-router';
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';

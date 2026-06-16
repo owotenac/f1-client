@@ -1,4 +1,4 @@
-import { CARD_THEME } from '@/constants/theme';
+import { CARD_THEME } from '@/shared/f1/constants/theme';
 import React, { useEffect, useRef } from 'react';
 import { Animated, StyleSheet, View } from 'react-native';
 

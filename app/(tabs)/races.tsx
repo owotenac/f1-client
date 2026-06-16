@@ -1,17 +1,20 @@
 import Header from '@/components/header';
-import RaceCard from '@/components/race-card';
-import { BG_THEME } from '@/constants/theme';
+import { useAppStore } from '@/model/filter';
+import RaceCard from '@/shared/f1/components/race-card';
+import { CURRENT_SEASON } from '@/shared/f1/constants/config';
+import { BG_THEME } from '@/shared/f1/constants/theme';
 import { RaceProps } from '@/shared/f1/models/race-model';
 import { OpenF1API } from '@/shared/f1/services/openf1api';
-import { useLocalSearchParams } from 'expo-router';
+import { showToast } from '@/shared/components/toaster';
+import { useRouter } from 'expo-router';
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, ScrollView, StyleSheet } from 'react-native';
+import { ActivityIndicator, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Races() {
 
-  const local = useLocalSearchParams();
-  const season = local.season as string;
+  const { setCurrentRace } = useAppStore();
+  const router = useRouter();
 
   const [loading, setLoading] = useState(true);
   const [races, setRaces] = useState<RaceProps[]>([])
@@ -19,13 +22,14 @@ export default function Races() {
   useEffect(() => {
     const fetchRaces = async () => {
       try {
-        const result = await OpenF1API.getRaces('2026');
+        const result = await OpenF1API.getRaces(CURRENT_SEASON);
         setRaces(result);
         setLoading(false);
 
       } catch (error) {
         console.error("Error fetching races:", error);
-        setLoading(false); // Don't forget to stop loading on error!
+        showToast('Failed to load races. Please try again later.', 'error');
+        setLoading(false);
       }
     };
 
@@ -35,6 +39,12 @@ export default function Races() {
   }, []);
 
 
+  const select = (p: RaceProps) => {
+    setCurrentRace(p)
+    router.push({
+      pathname: '/race-details'
+    })
+  }
   return (
 
     <SafeAreaProvider>
@@ -45,7 +55,9 @@ export default function Races() {
             <ActivityIndicator size="large" />
           }
           {races.map((d, index) => (
-            <RaceCard key={index} {...d} />
+            <TouchableOpacity key={index} onPress={() => select(d)}>
+              <RaceCard {...d} />
+            </TouchableOpacity>
           ))}
         </ScrollView>
       </SafeAreaView>

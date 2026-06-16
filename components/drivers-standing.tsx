@@ -1,6 +1,7 @@
-import { BG_THEME } from '@/constants/theme';
+import { BG_THEME } from '@/shared/f1/constants/theme';
 import { DriversStandingProps } from '@/shared/f1/models/drivers-standing-model';
 import { OpenF1API } from '@/shared/f1/services/openf1api';
+import { showToast } from '@/shared/components/toaster';
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, Image, StyleSheet, Text, View } from 'react-native';
 
@@ -17,8 +18,9 @@ export default function DriversStanding() {
                 setLoading(false);
 
             } catch (error) {
-                console.error("Error fetching races:", error);
-                setLoading(false); // Don't forget to stop loading on error!
+                console.error("Error fetching drivers standing:", error);
+                showToast('Failed to load drivers standing. Please try again later.', 'error');
+                setLoading(false);
             }
         };
 

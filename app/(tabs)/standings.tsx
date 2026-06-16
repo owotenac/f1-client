@@ -1,6 +1,6 @@
 import ConstructorsStandings from '@/components/constructors-standing'
 import DriversStandings from '@/components/drivers-standing'
-import { BG_THEME } from '@/constants/theme'
+import { BG_THEME } from '@/shared/f1/constants/theme'
 import React, { useState } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'

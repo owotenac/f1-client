@@ -5,12 +5,13 @@ import NextRace from '@/components/next-race';
 import { DriversStandingsSimplifiedSkeleton } from '@/components/squeleton/driversstandingssimplified-squeleton';
 import { LastRaceSkeleton } from '@/components/squeleton/last-race-squeleton';
 import { NextRaceSkeleton } from '@/components/squeleton/next-race-squeleton';
-import { BG_THEME, RED_THEME } from '@/constants/theme';
+import { BG_THEME, RED_THEME } from '@/shared/f1/constants/theme';
 import { DriversStandingProps } from '@/shared/f1/models/drivers-standing-model';
 import { RaceProps } from '@/shared/f1/models/race-model';
 import { SessionProps } from '@/shared/f1/models/session-model';
 import { SessionResultProps } from '@/shared/f1/models/session-result-model';
 import { OpenF1API } from '@/shared/f1/services/openf1api';
+import { showToast } from '@/shared/components/toaster';
 import React, { useEffect, useState } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
@@ -43,6 +44,7 @@ export default function Index() {
         setLandingData({ lastRace, nextRace, standings });
       } catch (error) {
         console.error(error);
+        showToast('Failed to load data. Please try again later.', 'error');
       }
     };
     fetchAll();

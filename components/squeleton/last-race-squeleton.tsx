@@ -1,4 +1,4 @@
-import { BG_THEME, RED_THEME } from '@/constants/theme';
+import { BG_THEME, RED_THEME } from '@/shared/f1/constants/theme';
 import { Skeleton } from 'moti/skeleton';
 import { StyleSheet, View } from 'react-native';
 

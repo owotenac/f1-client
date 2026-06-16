@@ -1,6 +1,7 @@
-import { BG_THEME } from '@/constants/theme';
+import { BG_THEME } from '@/shared/f1/constants/theme';
 import { ConstructorsStandingProps } from '@/shared/f1/models/constructors-standing-model';
 import { OpenF1API } from '@/shared/f1/services/openf1api';
+import { showToast } from '@/shared/components/toaster';
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, Image, StyleSheet, Text, View } from 'react-native';
 
@@ -16,8 +17,9 @@ export default function ConstructorsStanding() {
                 setStanding(result)
                 setLoading(false);
             } catch (error) {
-                console.error("Error fetching races:", error);
-                setLoading(false); // Don't forget to stop loading on error!
+                console.error("Error fetching constructors standing:", error);
+                showToast('Failed to load constructors standing. Please try again later.', 'error');
+                setLoading(false);
             }
         };
 

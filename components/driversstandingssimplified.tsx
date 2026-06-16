@@ -1,5 +1,5 @@
-import { CARD_THEME } from '@/constants/theme';
-import { DriversStandingProps } from '@/model/drivers-standing-model';
+import { CARD_THEME } from '@/shared/f1/constants/theme';
+import { DriversStandingProps } from '@/shared/f1/models/drivers-standing-model';
 import { router } from 'expo-router';
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';

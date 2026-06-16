@@ -1,5 +1,5 @@
-import { CARD_THEME, RED_THEME } from '@/constants/theme';
 import { useAppStore } from '@/model/filter';
+import { CARD_THEME, RED_THEME } from '@/shared/f1/constants/theme';
 import { RaceProps } from '@/shared/f1/models/race-model';
 import { useRouter } from 'expo-router';
 import React, { useEffect, useState } from 'react';

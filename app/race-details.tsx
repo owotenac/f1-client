@@ -1,9 +1,10 @@
 import SessionCard from '@/components/session-card';
 import SessionCardSqueleton from '@/components/squeleton/session-card-squeleton';
-import { BG_THEME } from '@/constants/theme';
 import { useAppStore } from '@/model/filter';
+import { BG_THEME } from '@/shared/f1/constants/theme';
 import { SessionProps } from '@/shared/f1/models/session-model';
 import { OpenF1API } from '@/shared/f1/services/openf1api';
+import { showToast } from '@/shared/components/toaster';
 import { Hash, Ruler, RulerDimensionLine, Spline, Timer } from 'lucide-react-native';
 import React, { useEffect, useState } from 'react';
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
@@ -20,7 +21,8 @@ export default function RaceDetails() {
         const result = await OpenF1API.getSessions(currentRace);
         setSessions(result);
       } catch (error) {
-        console.error('Error fetching races:', error);
+        console.error('Error fetching sessions:', error);
+        showToast('Failed to load sessions. Please try again later.', 'error');
       } finally {
         setLoading(false);
       }
