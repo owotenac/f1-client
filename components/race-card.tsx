@@ -1,6 +1,6 @@
 import { CARD_THEME, RED_THEME } from '@/constants/theme';
 import { useAppStore } from '@/model/filter';
-import { RaceProps } from '@/model/race-model';
+import { RaceProps } from '@/shared/f1/models/race-model';
 import { useRouter } from 'expo-router';
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
@@ -62,8 +62,8 @@ const styles = StyleSheet.create({
 
     text_meeting_name: {
         color: "#b1b1b1ff",
-        fontSize: 10,
-        fontFamily: "f1-regular",
+        fontSize: 12,
+        //fontFamily: "f1-regular",
     },
     text_country_name: {
         fontFamily: "f1-bold",

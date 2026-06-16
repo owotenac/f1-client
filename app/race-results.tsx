@@ -1,7 +1,7 @@
 import { BG_THEME, CARD_THEME } from '@/constants/theme';
 import { useAppStore } from '@/model/filter';
 import { SessionResultProps } from '@/model/session-result-model';
-import { OpenF1API } from '@/services/openf1api';
+import { OpenF1API } from '@/shared/f1/services/openf1api';
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, Image, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';

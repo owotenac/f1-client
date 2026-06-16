@@ -11,9 +11,12 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
 
   const [loaded, error] = useFonts({
-    'f1-bold': require("@/assets/fonts/Formula1-Bold_web_0.ttf"),
-    'f1-regular': require("@/assets/fonts/Formula1-Regular_web_0.ttf"),
-    'f1-wide': require("@/assets/fonts/Formula1-Wide_web_0.ttf")
+    // 'f1-bold': require("@/assets/fonts/Formula1-Bold_web_0.ttf"),
+    // 'f1-regular': require("@/assets/fonts/Formula1-Regular_web_0.ttf"),
+    // 'f1-wide': require("@/assets/fonts/Formula1-Wide_web_0.ttf")
+    'f1-bold': require('@/assets/fonts/Audiowide-Regular.ttf'),
+    'f1-regular': require('@/assets/fonts/Audiowide-Regular.ttf'),
+    'f1-wide': require('@/assets/fonts/Audiowide-Regular.ttf')
   });
 
   useEffect(() => {

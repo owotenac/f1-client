@@ -6,11 +6,11 @@ import { DriversStandingsSimplifiedSkeleton } from '@/components/squeleton/drive
 import { LastRaceSkeleton } from '@/components/squeleton/last-race-squeleton';
 import { NextRaceSkeleton } from '@/components/squeleton/next-race-squeleton';
 import { BG_THEME, RED_THEME } from '@/constants/theme';
-import { DriversStandingProps } from '@/model/drivers-standing-model';
-import { RaceProps } from '@/model/race-model';
-import { SessionProps } from '@/model/session-model';
-import { SessionResultProps } from '@/model/session-result-model';
-import { OpenF1API } from '@/services/openf1api';
+import { DriversStandingProps } from '@/shared/f1/models/drivers-standing-model';
+import { RaceProps } from '@/shared/f1/models/race-model';
+import { SessionProps } from '@/shared/f1/models/session-model';
+import { SessionResultProps } from '@/shared/f1/models/session-result-model';
+import { OpenF1API } from '@/shared/f1/services/openf1api';
 import React, { useEffect, useState } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
@@ -132,6 +132,7 @@ const styles = StyleSheet.create({
     fontFamily: "f1-bold",
     fontSize: 20,
     color: "#fff",
+    fontWeight: 600,
   },
   mainText: {
     fontFamily: "f1-regular",

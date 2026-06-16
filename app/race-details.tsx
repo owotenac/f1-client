@@ -2,8 +2,8 @@ import SessionCard from '@/components/session-card';
 import SessionCardSqueleton from '@/components/squeleton/session-card-squeleton';
 import { BG_THEME } from '@/constants/theme';
 import { useAppStore } from '@/model/filter';
-import { SessionProps } from '@/model/session-model';
-import { OpenF1API } from '@/services/openf1api';
+import { SessionProps } from '@/shared/f1/models/session-model';
+import { OpenF1API } from '@/shared/f1/services/openf1api';
 import { Hash, Ruler, RulerDimensionLine, Spline, Timer } from 'lucide-react-native';
 import React, { useEffect, useState } from 'react';
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
@@ -43,7 +43,7 @@ export default function RaceDetails() {
             <Image style={styles.flag} source={{ uri: currentRace.country_flag }} />
             <Text style={styles.main_text_race} >{currentRace.meeting_name}</Text>
           </View>
-          <Text style={styles.meeting_official_name}>{currentRace.meeting_official_name}</Text>
+          {/* <Text style={styles.meeting_official_name}>{currentRace.meeting_official_name}</Text> */}
         </View>
 
         <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
@@ -232,13 +232,13 @@ const styles = StyleSheet.create({
   fastest_lap_driver: {
     color: '#dfdfdfff',
     fontSize: 12,
-    fontFamily: 'f1-regular',
+    //fontFamily: 'f1-regular',
     //textAlign: 'center',
   },
   main_text_circuit_info: {
     color: '#dfdfdfff',
-    fontSize: 11,
-    fontFamily: 'f1-regular',
+    fontSize: 12,
+    //fontFamily: 'f1-regular',
     //textAlign: 'center',
   },
   flag: {

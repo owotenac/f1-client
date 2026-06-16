@@ -3,16 +3,16 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
 const DriverCard = (props: DriverProps) => {
-  return (
-    <View style={[styles.card, {borderColor: `#${props.team_colour}`}]}>
-        <View style= { styles.nameBox}>
-            <Text style={styles.text_first_name}>{props.first_name}</Text>
-            <Text style={[styles.text_last_name, {color: `#${props.team_colour}`}]}>{props.last_name}</Text>
-            <Text style={styles.text_team}>{props.team_name}</Text>
-        </View>
+    return (
+        <View style={[styles.card, { borderColor: `#${props.team_colour}` }]}>
+            <View style={styles.nameBox}>
+                <Text style={styles.text_first_name}>{props.first_name}</Text>
+                <Text style={[styles.text_last_name, { color: `#${props.team_colour}` }]}>{props.last_name}</Text>
+                <Text style={styles.text_team}>{props.team_name}</Text>
+            </View>
             <Text style={styles.number}>{props.driver_number}</Text>
-    </View>
-  )
+        </View>
+    )
 }
 
 export default DriverCard
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         paddingVertical: 5
     },
-    nameBox : {
+    nameBox: {
         flexDirection: 'column',
         gap: 2
 
@@ -43,14 +43,14 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: "#fff",
     },
-    text_team : {
+    text_team: {
         fontFamily: "f1-wide",
         fontSize: 12,
         color: "#fff",
     },
     number: {
         fontFamily: "f1-regular",
-        fontSize:40,
+        fontSize: 40,
         color: 'white',
     }
 

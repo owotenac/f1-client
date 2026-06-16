@@ -1,6 +1,6 @@
 import { BG_THEME } from '@/constants/theme';
-import { ConstructorsStandingProps } from '@/model/constructors-standing-model';
-import { OpenF1API } from '@/services/openf1api';
+import { ConstructorsStandingProps } from '@/shared/f1/models/constructors-standing-model';
+import { OpenF1API } from '@/shared/f1/services/openf1api';
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, Image, StyleSheet, Text, View } from 'react-native';
 
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     position: {
-        width: 20,
+        width: 30,
     },
     time: {
         textAlign: "right",
@@ -97,7 +97,6 @@ const styles = StyleSheet.create({
     },
     cell: {
         color: "#fff",
-        fontFamily: "f1-regular",
     },
     driver: {
         fontSize: 20,

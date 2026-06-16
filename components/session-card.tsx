@@ -1,6 +1,6 @@
 import { CARD_THEME, RED_THEME } from '@/constants/theme';
 import { useAppStore } from '@/model/filter';
-import { SessionProps } from '@/model/session-model';
+import { SessionProps } from '@/shared/f1/models/session-model';
 import { useRouter } from 'expo-router';
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
   },
   text_date: {
     paddingTop: 10,
-    fontFamily: "f1-regular",
+    //fontFamily: "f1-regular",
     fontSize: 12,
     color: "#bbbbbb",
   },

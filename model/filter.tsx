@@ -1,6 +1,6 @@
 import { create } from "zustand";
-import { RaceProps } from "./race-model";
-import { SessionProps } from "./session-model";
+import { RaceProps } from "../shared/f1/models/race-model";
+import { SessionProps } from "../shared/f1/models/session-model";
 import { SessionResultProps } from "./session-result-model";
 
 type FilterState = {

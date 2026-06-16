@@ -1,8 +1,8 @@
 import Header from '@/components/header';
 import RaceCard from '@/components/race-card';
 import { BG_THEME } from '@/constants/theme';
-import { RaceProps } from '@/model/race-model';
-import { OpenF1API } from '@/services/openf1api';
+import { RaceProps } from '@/shared/f1/models/race-model';
+import { OpenF1API } from '@/shared/f1/services/openf1api';
 import { useLocalSearchParams } from 'expo-router';
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, ScrollView, StyleSheet } from 'react-native';
